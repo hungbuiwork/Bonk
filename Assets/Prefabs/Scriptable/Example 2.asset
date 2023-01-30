@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49ebb0661a43d745a35d4c8963483f3, type: 3}
   m_Name: Example 2
   m_EditorClassIdentifier: 
-  Name: Example Troop
-  Description: This is an example of a purchasable item.
-  Icon: {fileID: 21300000, guid: 9c0d6ec706e01ce448aea81584af092b, type: 3}
-  CurrencyName: troopCurrency
+  Name: Crate
+  Description: This is a crate!
+  Icon: {fileID: 21300000, guid: 68a41ff097730fb45a9b2adce184a79d, type: 3}
+  CurrencyName: buildingCurrency
   CostAmount: 2
-  Content: {fileID: 0}
+  Content: {fileID: 2765219147678138626, guid: 98940f72df5c03a48af4bf4a55900841, type: 3}

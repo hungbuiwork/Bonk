@@ -28,15 +28,15 @@ public class Shop : MonoBehaviour
     public void Update()
     {
         //DELETE LATER
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Previous();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Next();
         }
-        if (Input.GetKeyDown(KeyCode.Q)){
+        if (Input.GetKeyDown(KeyCode.R)){
             PurchaseCurrent(inventory);
         }
     }

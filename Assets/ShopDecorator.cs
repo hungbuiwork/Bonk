@@ -13,9 +13,6 @@ public class ShopDecorator : MonoBehaviour
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI cost;
     
-
-
-
     [SerializeField] private Image prevImage;
     [SerializeField] private Image nextImage;
 
