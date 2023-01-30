@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Collections;
+using System;
 
 public class Inventory : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Inventory : MonoBehaviour
 
     private Dictionary<CurrencyType, int> currencies = new Dictionary<CurrencyType, int>();
 
+    public Action<CurrencyType, int> onResouceChanged;
+
     public void Awake()
     {
         for (int i = 0; i < InventoryKeys.Count; i++)
@@ -24,7 +27,10 @@ public class Inventory : MonoBehaviour
             currencies.Add(InventoryKeys[i], InventoryValues[i]);
         }
     }
-
+    public Dictionary<CurrencyType, int> GetInventory()
+    {
+        return currencies;
+    }
     private void Refresh()
     {
         //REMOVE BEFORE BUILDING. Just serializes
@@ -58,7 +64,8 @@ public class Inventory : MonoBehaviour
         {
             currencies.Add(type, quantity);
         }
-        Refresh();
+        onResouceChanged(type, currencies[type]);
+        Refresh(); //DELETE LATER
     }
 
     public void RemoveResource(CurrencyType type, int quantity)
@@ -66,7 +73,8 @@ public class Inventory : MonoBehaviour
         //Removes resource to inventory
         if (!currencies.ContainsKey(type)) { return; }
         currencies[type] = Mathf.Max( currencies[type] - quantity, 0);
-        Refresh();
+        onResouceChanged(type, currencies[type]);
+        Refresh();//DELETE LATER
     }
 
     public bool HasResource(CurrencyType type, int quantityToCheck)
