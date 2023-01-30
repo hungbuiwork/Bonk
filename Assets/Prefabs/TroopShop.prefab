@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5089634699603833564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5089634699603833566}
+  - component: {fileID: 5089634699603833561}
+  - component: {fileID: 5089634699603833560}
+  m_Layer: 0
+  m_Name: TroopShop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5089634699603833566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089634699603833564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.279395, y: -7.299714, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5089634699603833561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089634699603833564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd31324817924944abc1044c612760b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryKeys:
+  - {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
+  - {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
+  InventoryValues: 5a00000064000000
+--- !u!114 &5089634699603833560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089634699603833564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de63e8460d44e847b1e93f16a59951b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 786695bb68c8fa347a001b2368988602, type: 2}
+  - {fileID: 11400000, guid: 3e6574445b764ac41bb0d633e5479257, type: 2}
+  - {fileID: 11400000, guid: d9e2372ee60f0d54789ca2d6458ba712, type: 2}
+  currentIndex: 0
+  inventory: {fileID: 5089634699603833561}
+  cursor: {fileID: 0}

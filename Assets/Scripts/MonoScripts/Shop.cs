@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour
     public bool canPurchaseCurrent(Inventory inventory)
     {
         Purchasable currentPurchasable = GetCurrent();
-        if (inventory.GetAmount(currentPurchasable.CurrencyName) >= currentPurchasable.CostAmount)
+        if (inventory.GetAmount(currentPurchasable.CurrencyType) >= currentPurchasable.CostAmount)
         {
             return true;
         }
@@ -72,7 +72,7 @@ public class Shop : MonoBehaviour
         bool result = canPurchaseCurrent(inventory);
         if (result)
         {
-            inventory.RemoveResource(GetCurrent().CurrencyName, GetCurrent().CostAmount);
+            inventory.RemoveResource(GetCurrent().CurrencyType, GetCurrent().CostAmount);
             if (onPurchaseSuccess != null) { onPurchaseSuccess(); }
         }
         else

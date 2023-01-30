@@ -16,6 +16,8 @@ public class ShopDecorator : MonoBehaviour
     [SerializeField] private Image prevImage;
     [SerializeField] private Image nextImage;
 
+    [SerializeField] private Image currencyImage;
+
     private void Start()
     {
         Refresh();
@@ -27,8 +29,9 @@ public class ShopDecorator : MonoBehaviour
         currentImage.sprite = shop.GetCurrent().Icon;
         prevImage.sprite = shop.GetPrevious().Icon;
         nextImage.sprite = shop.GetNext().Icon;
+        currencyImage.sprite = shop.GetCurrent().CurrencyType.getIcon();
         title.text = shop.GetCurrent().Name;
         description.text =  shop.GetCurrent().Description;
-        cost.text = shop.GetCurrent().CurrencyName + " : " + shop.GetCurrent().CostAmount.ToString();
+        cost.text = "Cost" + " : " + shop.GetCurrent().CostAmount.ToString();
     }
 }

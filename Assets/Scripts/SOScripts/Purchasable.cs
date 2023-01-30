@@ -23,7 +23,7 @@ public class Purchasable : ScriptableObject
     //Sale info
     [Header("Cost Info")]
     [SerializeField]
-    public string CurrencyName;
+    public CurrencyType CurrencyType;
     [SerializeField]
     public int CostAmount;
 

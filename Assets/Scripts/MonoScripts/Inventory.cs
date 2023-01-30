@@ -11,11 +11,11 @@ public class Inventory : MonoBehaviour
     ///
  
     [SerializeField]
-    private List<string> InventoryKeys;
+    private List<CurrencyType> InventoryKeys;
     [SerializeField]
     private List<int> InventoryValues;
 
-    private Dictionary<string, int> currencies = new Dictionary<string, int>();
+    private Dictionary<CurrencyType, int> currencies = new Dictionary<CurrencyType, int>();
 
     public void Awake()
     {
@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
 
 
     }
-    public int GetAmount(string type)
+    public int GetAmount(CurrencyType type)
     {
         if (currencies.ContainsKey(type))
         {
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
         }
         return 0;
     }
-    public void AddResource(string type, int quantity)
+    public void AddResource(CurrencyType type, int quantity)
     {
         ///Adds resource to inventory
         
@@ -61,7 +61,7 @@ public class Inventory : MonoBehaviour
         Refresh();
     }
 
-    public void RemoveResource(string type, int quantity)
+    public void RemoveResource(CurrencyType type, int quantity)
     {
         //Removes resource to inventory
         if (!currencies.ContainsKey(type)) { return; }
@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
         Refresh();
     }
 
-    public bool HasResource(string type, int quantityToCheck)
+    public bool HasResource(CurrencyType type, int quantityToCheck)
     {
         ///Returns bool whether the quantity of that resource is there
 
