@@ -18,7 +18,7 @@ public class Shop : MonoBehaviour
     [SerializeField]
     private Inventory inventory; //The current inventory being traded with
 
-    public Action onPurchaseSuccess, onPurchaseFail;
+    public Action onPurchaseSuccess, onPurchaseFail, onPrev, onNext;
 
     public void Awake()
     {
@@ -44,12 +44,14 @@ public class Shop : MonoBehaviour
     {
         //Changes current index to the next one
         currentIndex = (items.Count + currentIndex + 1) % items.Count;
+        onNext();
     }
     public void Previous()
     {
         //Changes current index to the previous one
         currentIndex = (items.Count + currentIndex - 1 ) % items.Count;
         //adding items.count ensures we dont run into any negative numbers
+        onPrev();
     }
     public bool canPurchaseCurrent(Inventory inventory)
     {
