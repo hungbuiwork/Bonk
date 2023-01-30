@@ -9,31 +9,71 @@ public class Inventory : MonoBehaviour
     /// Inventory script, used to manage inventory of (currently just "Gold").
     /// </summary>
     ///
+ 
     [SerializeField]
-    private int Gold; //TODO: Change to private set later
+    private List<string> InventoryKeys;
+    [SerializeField]
+    private List<int> InventoryValues;
 
-    public int getGold()
-    {
-        return Gold;
-    }
-    public void AddResource(int quantity)
-    {
-        ///Adds resource to inventory
-        Gold += quantity;
-    }
+    private Dictionary<string, int> currencies = new Dictionary<string, int>();
 
-    public void RemoveResource(int quantity)
+    public void Awake()
     {
-        Debug.Log("REMOVING RESSOURCE");
-        Gold -= quantity;
-        if (Gold <= 0) {
-            Gold = 0;
+        for (int i = 0; i < InventoryKeys.Count; i++)
+        {
+            currencies.Add(InventoryKeys[i], InventoryValues[i]);
         }
     }
 
-    public bool HasResource(int quantityToCheck)
+    private void Refresh()
+    {
+        //REMOVE BEFORE BUILDING. Just serializes
+        InventoryKeys.Clear();
+        InventoryValues.Clear();
+        foreach(var (key, value) in currencies)
+        {
+            InventoryKeys.Add(key);
+            InventoryValues.Add(value);
+        }
+
+
+    }
+    public int GetAmount(string type)
+    {
+        if (currencies.ContainsKey(type))
+        {
+            return currencies[type];
+        }
+        return 0;
+    }
+    public void AddResource(string type, int quantity)
+    {
+        ///Adds resource to inventory
+        
+        if (currencies.ContainsKey(type))
+        {
+            currencies[type] += quantity;
+        }
+        else
+        {
+            currencies.Add(type, quantity);
+        }
+        Refresh();
+    }
+
+    public void RemoveResource(string type, int quantity)
+    {
+        //Removes resource to inventory
+        if (!currencies.ContainsKey(type)) { return; }
+        currencies[type] = Mathf.Max( currencies[type] - quantity, 0);
+        Refresh();
+    }
+
+    public bool HasResource(string type, int quantityToCheck)
     {
         ///Returns bool whether the quantity of that resource is there
-        return quantityToCheck >= Gold;
+
+        if (!currencies.ContainsKey(type)) { return false; }
+        return currencies[type] >= quantityToCheck;
     }
 }

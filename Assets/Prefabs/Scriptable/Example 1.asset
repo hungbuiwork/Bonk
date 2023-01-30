@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Example 1
   m_EditorClassIdentifier: 
   Name: Example Troop
-  Cost: 8
   Description: This is an example of a purchasable item.
   Icon: {fileID: 21300000, guid: 3a0c527d7f890d64a9b56b086e6e766a, type: 3}
+  CurrencyName: troopCurrency
+  CostAmount: 5
+  Content: {fileID: 0}

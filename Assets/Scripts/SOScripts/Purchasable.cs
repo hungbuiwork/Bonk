@@ -10,18 +10,25 @@ public class Purchasable : ScriptableObject
     /// <summary>
     /// Base class for purchasables
     /// </summary>
-    
-    //Sale/Item information
+
+    //Item information
+    [Header("Item Info")]
     [SerializeField]
     public string Name;
-    [SerializeField]
-    public int Cost;
     [SerializeField]
     public string Description;
     [SerializeField]
     public Sprite Icon;
 
+    //Sale info
+    [Header("Cost Info")]
+    [SerializeField]
+    public string CurrencyName;
+    [SerializeField]
+    public int CostAmount;
+
     //Content
+    [Header("Content")]
     [SerializeField]
     public GameObject Content;
 
