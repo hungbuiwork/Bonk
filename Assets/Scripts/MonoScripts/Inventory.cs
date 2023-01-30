@@ -8,10 +8,14 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Inventory script, used to manage inventory of (currently just "Gold").
     /// </summary>
+    ///
     [SerializeField]
-    public int Gold { get; private set; }
+    private int Gold; //TODO: Change to private set later
 
-
+    public int getGold()
+    {
+        return Gold;
+    }
     public void AddResource(int quantity)
     {
         ///Adds resource to inventory
@@ -20,6 +24,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveResource(int quantity)
     {
+        Debug.Log("REMOVING RESSOURCE");
         Gold -= quantity;
         if (Gold <= 0) {
             Gold = 0;

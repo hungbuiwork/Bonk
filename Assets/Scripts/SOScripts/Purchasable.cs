@@ -10,30 +10,21 @@ public class Purchasable : ScriptableObject
     /// <summary>
     /// Base class for purchasables
     /// </summary>
-    [SerializeField]
-    private string Name;
-    [SerializeField]
-    private int Cost;
-    [SerializeField]
-    private string Description;
-    [SerializeField]
-    private Sprite Icon;
-
-    public bool CanPurchase(Inventory inventory)
-    {
-        ///Compares a player's resources with this cost, returning a bool if the player has enough resources
-        return inventory.HasResource(Cost);
-    }
     
-    public virtual bool Purchase(Inventory inventory)
-    {
-        ///Returns a bool depending on whether the transaction was possible
-        ///Removes resources from the inventory passed in
-        if (!CanPurchase(inventory))
-        {
-            return false;
-        }
-        inventory.RemoveResource(Cost);
-        return true;
-    }
+    //Sale/Item information
+    [SerializeField]
+    public string Name;
+    [SerializeField]
+    public int Cost;
+    [SerializeField]
+    public string Description;
+    [SerializeField]
+    public Sprite Icon;
+
+    //Content
+    [SerializeField]
+    public GameObject Content;
+
+
+
 }
