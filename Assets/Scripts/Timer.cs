@@ -13,6 +13,11 @@ public class Timer : MonoBehaviour
     public float currentTime;
     public bool countDown;
 
+    [Header("Limit Settings")]
+    public bool hasLimit;
+    public float timerLimit;
+     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,20 @@ public class Timer : MonoBehaviour
     void Update()
     {
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
-        timerText.text = currentTime.ToString();
+
+        if(hasLimit && ((countDown && currentTime <= timerLimit)) || (!countDown && currentTime >= timerLimit))
+        {
+            currentTime = timerLimit;
+            SetTimerText();
+            timerText.color = Color.red;
+            enabled = false;
+        }
+
+        SetTimerText();
+    }
+
+    private void SetTimerText()
+    {
+        timerText.text = currentTime.ToString("0");
     }
 }
