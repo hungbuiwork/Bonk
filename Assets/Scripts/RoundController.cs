@@ -11,6 +11,7 @@ public class RoundController : MonoBehaviour
     
     public bool isBattlePhase;
     public bool isPrepPhase; // prep phase
+    public bool isPrepPhase2; // prep phase for player 2
 
     // Start is called before the first frame update
     void Start()
