@@ -5,8 +5,7 @@ using UnityEngine;
 public class RoundController : MonoBehaviour
 {
 
-    Timer timeManager;
-    //public GameObject timeManager;
+    public Timer timeManager;
 
     public float currentTime;
 
@@ -19,7 +18,8 @@ public class RoundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeManager.MethodFromTimer();
+
         isStandbyPhase = true;
         isPrepPhase = false;
         isPrepPhase2 = false;
@@ -30,15 +30,15 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime = timeManager.getCurrentTime();
+        //currentTime = timeManager.getCurrentTime();
 
         if(isPrepPhase)
         {
             //player 1 turn start
             if (currentTime == 0)
             {
-                isPrepPhase = false;
-                isPrepPhase2 = true;
+                //isPrepPhase = false;
+                //isPrepPhase2 = true;
             }
         }
         
@@ -58,23 +58,31 @@ public class RoundController : MonoBehaviour
             timeManager.startPrep();
         }
 
-        if(isPrepPhase)
+        else if(isPrepPhase)
         {
             isPrepPhase = false;
             isPrepPhase2 = true;
+
+            timeManager.startPrep();
         }
 
-        if(isPrepPhase2)
+        else if(isPrepPhase2)
         {
             isPrepPhase2 = false;
             isBattlePhase = true;
+
+            timeManager.startBattle();
         }
 
-        if(isBattlePhase)
+        else if(isBattlePhase)
         {
             isBattlePhase = false;
             isStandbyPhase = true;
+
+            timeManager.startStandby();
         }
+
+        else{}
 
     }
 }
