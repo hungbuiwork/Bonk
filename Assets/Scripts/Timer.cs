@@ -20,6 +20,8 @@ public class Timer : MonoBehaviour
     [Header("Prep Phase Duration")]
     public float prepDuration;
 
+    [Header("Battle Phase Duration")]
+    public float battleDuration;
 
 
      
@@ -43,6 +45,7 @@ public class Timer : MonoBehaviour
             enabled = false;
         }
 
+
         SetTimerText();
     }
 
@@ -55,6 +58,16 @@ public class Timer : MonoBehaviour
     public void startPrep()
     {
         currentTime = prepDuration;
+    }
+
+    public void startBattle()
+    {
+        currentTime = battleDuration;
+    }
+
+    public float getCurrentTime()
+    {
+        return currentTime;
     }
 
 }
