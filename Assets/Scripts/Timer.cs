@@ -16,13 +16,19 @@ public class Timer : MonoBehaviour
     [Header("Limit Settings")]
     public bool hasLimit;
     public float timerLimit;
+
+    [Header("Prep Phase Duration")]
+    public float prepDuration;
+
+
+
      
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        //currentTime = 0;
+    } 
 
     // Update is called once per frame
     void Update()
@@ -44,4 +50,11 @@ public class Timer : MonoBehaviour
     {
         timerText.text = currentTime.ToString("0");
     }
+
+
+    public void startPrep()
+    {
+        currentTime = prepDuration;
+    }
+
 }
