@@ -61,25 +61,25 @@ public class Timer : MonoBehaviour
         timerText.text = currentTime.ToString("0");
     }
 
-    public void startPrep()
+    public void StartPrep()
     {
         currentTime = prepDuration;
         timerText.color = Color.white;
     }
 
-    public void startBattle()
+    public void StartBattle()
     {
         currentTime = battleDuration;
         timerText.color = Color.green;
     }
 
-    public void startStandby()
+    public void StartStandby()
     {
         currentTime = standbyDuration;
         timerText.color = Color.blue;
     }
 
-    public float getCurrentTime()
+    public float GetCurrentTime()
     {
         return currentTime;
     }

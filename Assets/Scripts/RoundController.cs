@@ -20,7 +20,7 @@ public class RoundController : MonoBehaviour
     {
         timeManager.MethodFromTimer();
 
-        isStandbyPhase = true;
+        isStandbyPhase = false;
         isPrepPhase = false;
         isPrepPhase2 = false;
         isBattlePhase = false;
@@ -30,7 +30,6 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //currentTime = timeManager.getCurrentTime();
 
         if(isPrepPhase)
         {
@@ -48,14 +47,19 @@ public class RoundController : MonoBehaviour
         }
     }
 
-    public void nextPhase()
+    public void StartGame()
+    {
+        isStandbyPhase = true;
+    }
+
+    public void NextPhase()
     {
         if(isStandbyPhase)
         {
             isStandbyPhase = false;
             isPrepPhase = true;
 
-            timeManager.startPrep();
+            timeManager.StartPrep();
         }
 
         else if(isPrepPhase)
@@ -63,7 +67,7 @@ public class RoundController : MonoBehaviour
             isPrepPhase = false;
             isPrepPhase2 = true;
 
-            timeManager.startPrep();
+            timeManager.StartPrep();
         }
 
         else if(isPrepPhase2)
@@ -71,7 +75,7 @@ public class RoundController : MonoBehaviour
             isPrepPhase2 = false;
             isBattlePhase = true;
 
-            timeManager.startBattle();
+            timeManager.StartBattle();
         }
 
         else if(isBattlePhase)
@@ -79,7 +83,7 @@ public class RoundController : MonoBehaviour
             isBattlePhase = false;
             isStandbyPhase = true;
 
-            timeManager.startStandby();
+            timeManager.StartStandby();
         }
 
         else{}
