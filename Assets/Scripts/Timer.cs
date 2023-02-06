@@ -33,6 +33,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         //currentTime = 0;
+        // you can just adjust the time per phase via inspector
     } 
 
     // Update is called once per frame
@@ -82,6 +83,16 @@ public class Timer : MonoBehaviour
     public float GetCurrentTime()
     {
         return currentTime;
+    }
+
+    public bool CheckTimeOver()
+    {
+        if (currentTime <= timerLimit)
+        {
+            return true;
+        }
+
+        return false;
     }
 
 

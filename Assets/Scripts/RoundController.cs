@@ -18,6 +18,7 @@ public class RoundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         timeManager.MethodFromTimer();
 
         isStandbyPhase = false;
@@ -30,21 +31,29 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime = timeManager.GetCurrentTime();
-
-        if(isPrepPhase)
+        if(timeManager.CheckTimeOver())
         {
+            NextPhase();
+        }
+
+        if(isStandbyPhase)
+        {
+            //
+        }
+
+        else if(isPrepPhase)
+        {
+            //Debug.Log("prep phasing");
             //player 1 turn start
-            if (currentTime == 0)
-            {
-                //isPrepPhase = false;
-                //isPrepPhase2 = true;
-            }
+            
         }
         
         else if(isPrepPhase2)
         {
+            //CheckTimeOver();
             //player 2 turn start
+            
+            
         }
     }
 
@@ -52,6 +61,8 @@ public class RoundController : MonoBehaviour
     {
         isStandbyPhase = true;
     }
+
+
 
     public void NextPhase()
     {
