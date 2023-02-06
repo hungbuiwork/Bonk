@@ -21,11 +21,6 @@ public class RoundController : MonoBehaviour
         
         timeManager.MethodFromTimer();
 
-        isStandbyPhase = false;
-        isPrepPhase = false;
-        isPrepPhase2 = false;
-        isBattlePhase = false;
-
     }
 
     // Update is called once per frame

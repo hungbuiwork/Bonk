@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public SceneController sceneController;
+
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject warningMessage;
 
     public void Pause()
     {
@@ -19,9 +22,20 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void Home(int sceneID)
+    public void Home()
+    {
+        warningMessage.SetActive(true);
+    }
+
+    public void YesToHome()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneID);
+        sceneController.PreviousScene();
     }
+
+    public void NoToHome()
+    {
+        warningMessage.SetActive(false);
+    }
+
 }

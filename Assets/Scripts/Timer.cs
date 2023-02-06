@@ -39,6 +39,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("timer is counting...");
+
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
         if(hasLimit && ((countDown && currentTime <= timerLimit)) || (!countDown && currentTime >= timerLimit))
