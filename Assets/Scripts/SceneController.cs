@@ -7,8 +7,37 @@ public class SceneController : MonoBehaviour
 {
     public RoundController round;
 
+    [Header("Player 1 Stuff")]
+    [SerializeField] GameObject troopShop;
+    [SerializeField] GameObject cursor;
+
     [SerializeField] GameObject shopDisplay;
     [SerializeField] GameObject inventoryDisplay;
+
+    [Header("Player 2 Stuff")]
+    [SerializeField] GameObject troopShop2;
+    [SerializeField] GameObject cursor2;
+
+    [SerializeField] GameObject shopDisplay2;
+    [SerializeField] GameObject inventoryDisplay2;
+
+    List<GameObject> p1_objects = new List<GameObject>();
+    List<GameObject> p2_objects = new List<GameObject>();
+
+    // start
+    void Start()
+    {
+        p1_objects.Add(troopShop);
+        p1_objects.Add(cursor);
+        p1_objects.Add(shopDisplay);
+        p1_objects.Add(inventoryDisplay);
+
+        p2_objects.Add(troopShop2);
+        p2_objects.Add(cursor2);
+        p2_objects.Add(shopDisplay2);
+        p2_objects.Add(inventoryDisplay2);
+
+    }
 
     // menu buttons
 
@@ -31,22 +60,38 @@ public class SceneController : MonoBehaviour
     
     void Update()
     {
-        if(round.isStandbyPhase || round.isBattlePhase)
+        if(round.isPrepPhase)
         {
-            setPlayerUI(false);
+            setPlayerUI(p1_objects, true);
         }
 
-        if(round.isPrepPhase || round.isPrepPhase2)
+        else if(round.isPrepPhase2)
         {
-            setPlayerUI(true);
+            setPlayerUI(p2_objects, true);
+            setPlayerUI(p1_objects, false);
         }
 
+        else if(round.isBattlePhase)
+        {
+            setPlayerUI(p2_objects, false);
+        }
 
     }
 
-    void setPlayerUI(bool temp)
+    void setPlayerUI(List<GameObject> player_objects, bool isActive)
     {
-        shopDisplay.SetActive(temp);
-        inventoryDisplay.SetActive(temp);
+        
+        for(int i = 0; i < player_objects.Count; i++)
+        {
+            player_objects[i].SetActive(isActive);
+        }
+
+        // i can't get the foreach loop to work, it keep saying i'm missing curly bracket error
+        /*
+        foreach(var object in player_objects)
+        {
+            object.SetActive(isActive);
+        }*/
+        
     }
 }
