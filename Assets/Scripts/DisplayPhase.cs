@@ -8,18 +8,9 @@ public class DisplayPhase : MonoBehaviour
 
     [Header("Component")]
     public TextMeshProUGUI phase;
+    public TextMeshProUGUI nextPhase;
     public RoundController round;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        /*
-        phase_list.Add(round.isStandbyPhase);
-        phase_list.Add(round.isPrepPhase);
-        phase_list.Add(round.isPrepPhase2);
-        phase_list.Add(round.isBattlePhase);*/
-    } 
 
     // Update is called once per frame
     void Update()
@@ -27,32 +18,28 @@ public class DisplayPhase : MonoBehaviour
         if(round.isStandbyPhase)
         {
             phase.text = "Standby Phase";
+            nextPhase.text = "Start Preparation Phase";
         }
 
         else if(round.isPrepPhase)
         {
             phase.text = "Preparation Phase 1";
+            nextPhase.text = "Next Preparation Phase";
         }
 
         else if(round.isPrepPhase2)
         {
             phase.text = "Preparation Phase 2";
+            nextPhase.text = "Start Battle Phase";
         }
 
         else if(round.isBattlePhase)
         {
             phase.text = "Battle Phase";
+            nextPhase.text = "End Battle (debugging purpose)";
         }
 
 
-        //SetPhase();
     }
-
-
-    private void SetPhase()
-    {
-        //phase.text = .ToString();
-    }
-
 
 }
