@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TroopManager : MonoBehaviour
+public class UnitManager : MonoBehaviour
 {
     /// <summary>
     /// This script manages 2 teams of troops. Calls each troops update scripts, and manages
@@ -12,7 +12,7 @@ public class TroopManager : MonoBehaviour
 
 
     //Singleton pattern. ONLY ONE should exist in the scene.
-    public static TroopManager instance; 
+    public static UnitManager instance; 
 
 
     [SerializeField]
@@ -25,10 +25,16 @@ public class TroopManager : MonoBehaviour
     [SerializeField]
     private List<TroopScript> deadTroops2 = new List<TroopScript>();
 
+    [SerializeField]
+    private List<BuildingScript> buildings1;
+    [SerializeField]
+    private List<BuildingScript> buildings2;
+
+
     public Action<int> onWin; //1 for team 1 and 2 for team 2
 
-    /*
-    UNCOMMENT THIS WHEN READY TO IMPLEMENT
+    
+    //UNCOMMENT THIS WHEN READY TO IMPLEMENT
     private void Awake()
     {
         //Singleton Pattern
@@ -60,11 +66,13 @@ public class TroopManager : MonoBehaviour
     private void UpdateAllTroops()
     {
         //Call update method for all troops
-        UpdateTroops(aliveTroops1, deadTroops1);
-        UpdateTroops(aliveTroops2, deadTroops2);
+        UpdateTroops(ref aliveTroops1, ref deadTroops1, ref aliveTroops2);
+        UpdateTroops(ref aliveTroops2, ref deadTroops2, ref aliveTroops2);
+        UpdateBuildings(ref buildings1, ref aliveTroops2);
+        UpdateBuildings(ref buildings2, ref aliveTroops1);
     }
 
-    private void UpdateTroops(ref List<TroopScript> alive, ref List<TroopScript> dead)
+    private void UpdateTroops(ref List<TroopScript> alive, ref List<TroopScript> dead, ref List<TroopScript> enemies)
     {
         //Given a reference to alive and dead lists, update each troop, moving it to the necessary dead list if needed.
         for (int i = alive.Count - 1; i >= 0; i--)
@@ -77,9 +85,20 @@ public class TroopManager : MonoBehaviour
             }
             else
             {
+                troop.UpdateEnemies(ref enemies);
                 troop.OnUpdate(); //Calls OnUpdate for the respective troop.
                 //OnUpdate should call movement, and attacking
             }
+        }
+    }
+
+    private void UpdateBuildings(ref List<BuildingScript> buildings, ref List<TroopScript> enemies)
+    {
+        for (int i = buildings.Count - 1; i >= 0; i--)
+        {
+            BuildingScript building = buildings[i];
+            building.UpdateEnemies(ref enemies);
+            building.OnUpdate();
         }
 
     }
@@ -105,7 +124,7 @@ public class TroopManager : MonoBehaviour
         deadTroops1.Clear();
         deadTroops2.Clear();
     }
-    */
+    
 }
 
 
