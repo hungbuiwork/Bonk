@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TroopScript : UnitScript
 {
-	protected Rigidbody2D rb;
+    [SerializeField]
+    protected Rigidbody2D rb;
 	protected Health health;
 	protected bool troopIsDead;
 	protected float speed;
@@ -38,7 +39,7 @@ public class TroopScript : UnitScript
 		}
     }
 	
-	private void Start ()
+	private void Awake ()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		health = GetComponent<Health>();

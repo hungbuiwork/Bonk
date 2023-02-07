@@ -446,8 +446,9 @@ GameObject:
   m_Component:
   - component: {fileID: 374321733}
   - component: {fileID: 374321732}
+  - component: {fileID: 374321734}
   m_Layer: 0
-  m_Name: RoundManager
+  m_Name: Round&UnitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   isPrepPhase: 0
   isPrepPhase2: 0
   isBattlePhase: 0
+  unitManager: {fileID: 374321734}
 --- !u!4 &374321733
 Transform:
   m_ObjectHideFlags: 0
@@ -486,6 +488,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374321734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374321731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877a0f49d8ba7e649b512c808a1d35e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveTroops1: []
+  aliveTroops2: []
+  deadTroops1: []
+  deadTroops2: []
+  buildings1: []
+  buildings2: []
 --- !u!1 &396194253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,13 +2636,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 916053791}
     m_Modifications:
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: team
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1771688595}
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: unitManager
+      value: 
+      objectReference: {fileID: 374321734}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: currentIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2eee1dc7f0e3f154aa83f6d1fe3211f1, type: 2}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b1e6e538b43f4d544b490bf249da97c5, type: 2}
     - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_Name
       value: TroopShop2
@@ -2633,7 +2669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5089634699603833566, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_RootOrder
@@ -3066,37 +3102,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339495870}
   m_CullTransparentMesh: 1
---- !u!1 &1348729862
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1348729863}
-  m_Layer: 0
-  m_Name: Characters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1348729863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348729862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8385075, y: 0.44857386, z: 0.08590248}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1370184597 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
@@ -3487,7 +3492,7 @@ GameObject:
   - component: {fileID: 1654345313}
   - component: {fileID: 1654345312}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3855,7 +3860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317375030771880831, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
@@ -4259,13 +4264,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 916053791}
     m_Modifications:
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1190371557}
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: unitManager
+      value: 
+      objectReference: {fileID: 374321734}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: currentIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2eee1dc7f0e3f154aa83f6d1fe3211f1, type: 2}
+    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b1e6e538b43f4d544b490bf249da97c5, type: 2}
     - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_Name
       value: TroopShop

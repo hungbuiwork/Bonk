@@ -33,8 +33,32 @@ public class UnitManager : MonoBehaviour
 
     public Action<int> onWin; //1 for team 1 and 2 for team 2
 
-    
-    //UNCOMMENT THIS WHEN READY TO IMPLEMENT
+  
+    public void AddTroop(int team, TroopScript troop)
+    {
+        if (team == 1)
+        {
+            aliveTroops1.Add(troop);
+        }
+        else if (team == 2)
+        {
+            aliveTroops2.Add(troop);
+        }
+        else {
+            Debug.LogError("Team must be either 1 or 2");
+        }
+    }
+    public void AddBuilding(int team, BuildingScript building)
+    {
+        if (team == 1)
+        {
+            buildings1.Add(building);
+        }
+        else if (team == 2)
+        {
+            buildings2.Add(building);
+        }
+    }
     private void Awake()
     {
         //Singleton Pattern
@@ -51,12 +75,9 @@ public class UnitManager : MonoBehaviour
         onWin += CleanUpOnWin;
     }
     
-    public void Update()
-    {
-        OnUpdate(); //temporarily calls here. In future will only be called when the battle round is active
-    }
     public void OnUpdate()
     {
+        Debug.Log("Calling OnUpdate");
         CheckWinConditions();
         UpdateAllTroops();
 
@@ -80,6 +101,8 @@ public class UnitManager : MonoBehaviour
             TroopScript troop = alive[i];
             if (troop.isDead()) //Create isDead for troopScript which determines if a troop is dead. Rename as needed
             {
+                Debug.Log("Removing troop");
+
                 alive.RemoveAt(i);
                 dead.Add(troop);
             }
@@ -119,10 +142,28 @@ public class UnitManager : MonoBehaviour
     {
         //for now, lets just clear all the lists when a game is won.
         //Will change later!
-        aliveTroops1.Clear();
-        aliveTroops2.Clear();
-        deadTroops1.Clear();
-        deadTroops2.Clear();
+        Debug.Log("SOME TEAM HAS WON THE GAME");
+        DestroyTroopList(ref aliveTroops1);
+        DestroyTroopList(ref aliveTroops1);
+        DestroyBuildingList(ref buildings1);
+        DestroyBuildingList(ref buildings2);
+    }
+
+    private void DestroyTroopList(ref List<TroopScript> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            Destroy(list[i].gameObject); //IDK IF THIS IS CORRECTLY WORKING LMAO
+        }
+        list.Clear();
+    }
+    private void DestroyBuildingList(ref List<BuildingScript> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            Destroy(list[i].gameObject);
+        }
+        list.Clear();
     }
     
 }

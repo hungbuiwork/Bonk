@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class UnitScript : MonoBehaviour
 {
 	[SerializeField] private GameObject projectilePrefab;
-	
+    [SerializeField]
 	protected List<TroopScript> enemies;
 	protected bool canFire;
 	
@@ -17,7 +17,6 @@ public abstract class UnitScript : MonoBehaviour
 	
     public void UpdateEnemies(ref List<TroopScript> newEnemies)
     {
-        enemies.Clear();
         enemies = newEnemies;
     }
 
