@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public RoundController round;
 
+
     [Header("Player 1 Stuff")]
     [SerializeField] GameObject troopShop;
     [SerializeField] GameObject cursor;
@@ -14,12 +15,18 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject shopDisplay;
     [SerializeField] GameObject inventoryDisplay;
 
+    [SerializeField] GameObject p1_fog;
+
     [Header("Player 2 Stuff")]
     [SerializeField] GameObject troopShop2;
     [SerializeField] GameObject cursor2;
 
     [SerializeField] GameObject shopDisplay2;
     [SerializeField] GameObject inventoryDisplay2;
+
+    [SerializeField] GameObject p2_fog;
+
+    
 
     List<GameObject> p1_objects = new List<GameObject>();
     List<GameObject> p2_objects = new List<GameObject>();
@@ -31,11 +38,13 @@ public class SceneController : MonoBehaviour
         p1_objects.Add(cursor);
         p1_objects.Add(shopDisplay);
         p1_objects.Add(inventoryDisplay);
+        p1_objects.Add(p1_fog);
 
         p2_objects.Add(troopShop2);
         p2_objects.Add(cursor2);
         p2_objects.Add(shopDisplay2);
         p2_objects.Add(inventoryDisplay2);
+        p2_objects.Add(p2_fog);
 
     }
 
@@ -63,6 +72,7 @@ public class SceneController : MonoBehaviour
         if(round.isPrepPhase)
         {
             setPlayerUI(p1_objects, true);
+
         }
 
         else if(round.isPrepPhase2)
