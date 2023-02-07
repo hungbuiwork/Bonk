@@ -86,6 +86,13 @@ public class SceneController : MonoBehaviour
             setPlayerUI(p2_objects, false);
         }
 
+        //ensure it closes properly
+        else if(round.isStandbyPhase)
+        {
+            setPlayerUI(p2_objects, false);
+            setPlayerUI(p1_objects, false);
+        }
+
     }
 
     void setPlayerUI(List<GameObject> player_objects, bool isActive)

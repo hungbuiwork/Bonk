@@ -1749,7 +1749,7 @@ MonoBehaviour:
   timerLimit: 0
   standbyDuration: 5
   prepDuration: 30
-  battleDuration: 10
+  battleDuration: 40
 --- !u!4 &763699025
 Transform:
   m_ObjectHideFlags: 0

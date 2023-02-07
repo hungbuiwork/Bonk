@@ -15,6 +15,8 @@ public class RoundController : MonoBehaviour
 
     public UnitManager unitManager;
 
+    public bool phase_debug;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,25 +51,31 @@ public class RoundController : MonoBehaviour
 
         if(isStandbyPhase)
         {
-            //
+            //if(phase_debug){Debug.Log("PHASE: STANDBY @@@");}
+            
         }
 
         else if(isPrepPhase)
         {
+            //if(phase_debug){Debug.Log("PHASE: PREP 1 @@@");}
             //Debug.Log("prep phasing");
+
             //player 1 turn start
             
         }
         
         else if(isPrepPhase2)
         {
+            //if(phase_debug){Debug.Log("PHASE: PREP 2 @@@");}
             //CheckTimeOver();
+
             //player 2 turn start
             
             
         }
         else if (isBattlePhase)
         {
+            if(phase_debug){Debug.Log("PHASE: BATTLE @@@");}
             unitManager.OnUpdate(); //Call the update function
         }
     }
