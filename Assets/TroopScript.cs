@@ -35,7 +35,12 @@ public class TroopScript : MonoBehaviour
     public void OnUpdate()
     {
 		Transform target = GetClosestEnemy ();
-		Vector3 pos;
+		Vector3 toTarget = target.position - transform.position;
+        if (toTarget.magnitude > range)
+            rb.velocity = toTarget.normalized * speed;
+        else if (toTarget.magnitude < range)
+            rb.velocity = -toTarget.normalized * speed;
+		
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
