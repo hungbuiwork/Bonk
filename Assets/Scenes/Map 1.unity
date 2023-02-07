@@ -473,6 +473,7 @@ MonoBehaviour:
   isPrepPhase2: 0
   isBattlePhase: 0
   unitManager: {fileID: 374321734}
+  phase_debug: 1
 --- !u!4 &374321733
 Transform:
   m_ObjectHideFlags: 0
