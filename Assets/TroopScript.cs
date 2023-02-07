@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TroopScript : MonoBehaviour
 {
-	public Transform[] enemies; // will not be public
+	public List<TroopScript> enemies;
 	float speed=1f;
+	float range=1f;
+	public LayerMask layerOfTargets;
 	
 	Transform GetClosestEnemy ()
     {
@@ -24,15 +26,16 @@ public class TroopScript : MonoBehaviour
         }
         return bestTarget;
     }
-	
-    void OnAwake()
-    {
-        //set enemies
-    }
 
-    void Update()
+	public void UpdateEnemies (ref List<TroopScript> newEnemies)
+	{
+		enemies = newEnemies;
+	}
+
+    public void OnUpdate()
     {
 		Transform target = GetClosestEnemy ();
+		Vector3 pos;
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
