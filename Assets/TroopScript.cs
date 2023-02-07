@@ -5,23 +5,23 @@ using UnityEngine;
 public class TroopScript : MonoBehaviour
 {
 	public List<TroopScript> enemies;
-	float speed=1f;
-	float range=1f;
-	public LayerMask layerOfTargets;
+	private float speed=1f;
+	private float range=1f;
+	private Rigidbody2D rb;
 	
-	Transform GetClosestEnemy ()
+	TroopScript GetClosestEnemy ()
     {
-        Transform bestTarget = null;
+        TroopScript bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
-        foreach(Transform potentialTarget in enemies)
+        foreach(TroopScript enemy in enemies)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
+            Vector3 directionToTarget = enemy.transform.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if(dSqrToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
+                bestTarget = enemy;
             }
         }
         return bestTarget;
@@ -34,14 +34,13 @@ public class TroopScript : MonoBehaviour
 
     public void OnUpdate()
     {
-		Transform target = GetClosestEnemy ();
-		Vector3 toTarget = target.position - transform.position;
+		rb.velocity = new Vector3(0,0,0);
+		
+		TroopScript target = GetClosestEnemy ();
+		Vector3 toTarget = target.gameObject.transform.position - transform.position;
         if (toTarget.magnitude > range)
             rb.velocity = toTarget.normalized * speed;
         else if (toTarget.magnitude < range)
             rb.velocity = -toTarget.normalized * speed;
-		
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
 }
