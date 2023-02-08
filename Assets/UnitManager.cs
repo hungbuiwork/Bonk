@@ -145,7 +145,7 @@ public class UnitManager : MonoBehaviour
     {
         //1) TODO: Play any animations, etc , display who won
         //2) Clear the units on the board
-        Invoke("DestroyAllUnits", 3);
+        Invoke("DestroyAllUnits", 2);
     }
 
     private void DestroyAllUnits()
@@ -163,7 +163,7 @@ public class UnitManager : MonoBehaviour
     {
         for (int i = list.Count - 1; i >= 0; i--)
         {
-            Destroy(list[i].gameObject); //IDK IF THIS IS CORRECTLY WORKING LMAO
+            Destroy(list[i].gameObject);
         }
         list.Clear();
     }

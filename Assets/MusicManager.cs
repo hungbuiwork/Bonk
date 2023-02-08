@@ -6,31 +6,28 @@ public class MusicManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private AudioSource audio;
+    private AudioSource standbyMusic;
     [SerializeField]
-    private AudioClip standbyMusic;
-    [SerializeField]
-    private AudioClip battleMusic;
+    private AudioSource battleMusic;
     private void Start()
     {
-        if (audio == null)
-        {
-            audio = GetComponent<AudioSource>();
-        }
         RoundController roundController = GameObject.FindObjectOfType<RoundController>();
         roundController.beginStandby += SwitchStandbyMusic;
         roundController.beginBattle += SwitchBattleMusic;
+        battleMusic.Play();
+        battleMusic.Pause();
     }
+
 
     // Update is called once per frame
     private void SwitchBattleMusic() 
     {
-        audio.clip = battleMusic;
-        audio.Play();
+        standbyMusic.Pause();
+        battleMusic.UnPause();
     }
     private void SwitchStandbyMusic()
     {
-        audio.clip = standbyMusic;
-        audio.Play();
+        battleMusic.Pause();
+        standbyMusic.UnPause();
     }
 }
