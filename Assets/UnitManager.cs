@@ -147,6 +147,8 @@ public class UnitManager : MonoBehaviour
         Debug.Log("SOME TEAM HAS WON THE GAME");
         DestroyTroopList(ref aliveTroops1);
         DestroyTroopList(ref aliveTroops1);
+        DestroyTroopList(ref deadTroops1);
+        DestroyTroopList(ref deadTroops2);
         DestroyBuildingList(ref buildings1);
         DestroyBuildingList(ref buildings2);
     }

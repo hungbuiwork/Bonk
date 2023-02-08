@@ -9,12 +9,17 @@ public class DisplayPhase : MonoBehaviour
     [Header("Component")]
     public TextMeshProUGUI phase;
     public TextMeshProUGUI nextPhase;
+    public TextMeshProUGUI scorePlayer1;
+    public TextMeshProUGUI scorePlayer2;
     public RoundController round;
 
 
     // Update is called once per frame
     void Update()
     {
+        //possible improvement: dont update every frame/only update text when an event is fired
+        scorePlayer1.text = "P1 Score: " + round.scoreTeam1.ToString();
+        scorePlayer2.text= "P2 Score: " + round.scoreTeam2.ToString();
         if(round.isStandbyPhase)
         {
             phase.text = "Standby Phase";
