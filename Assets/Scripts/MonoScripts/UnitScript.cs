@@ -42,7 +42,7 @@ public abstract class UnitScript : MonoBehaviour
     {
 		canFire = false;
 		
-        GameObject projectile = Instantiate(projectilePrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 1));
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 		ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
 		projectileScript.SetValues(ref enemies, direction, projectileSpeed, projectileLifetime, projectileDamage);
 		

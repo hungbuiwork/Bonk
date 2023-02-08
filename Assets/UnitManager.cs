@@ -38,10 +38,12 @@ public class UnitManager : MonoBehaviour
     {
         if (team == 1)
         {
+			troop.UpdateEnemies(ref aliveTroops2);
             aliveTroops1.Add(troop);
         }
         else if (team == 2)
         {
+			troop.UpdateEnemies(ref aliveTroops1);
             aliveTroops2.Add(troop);
         }
         else {
@@ -52,10 +54,12 @@ public class UnitManager : MonoBehaviour
     {
         if (team == 1)
         {
+			building.UpdateEnemies(ref aliveTroops2);
             buildings1.Add(building);
         }
         else if (team == 2)
         {
+			building.UpdateEnemies(ref aliveTroops1);
             buildings2.Add(building);
         }
     }
@@ -87,13 +91,13 @@ public class UnitManager : MonoBehaviour
     private void UpdateAllTroops()
     {
         //Call update method for all troops
-        UpdateTroops(ref aliveTroops1, ref deadTroops1, ref aliveTroops2);
-        UpdateTroops(ref aliveTroops2, ref deadTroops2, ref aliveTroops2);
-        UpdateBuildings(ref buildings1, ref aliveTroops2);
-        UpdateBuildings(ref buildings2, ref aliveTroops1);
+        UpdateTroops(ref aliveTroops1, ref deadTroops1);
+        UpdateTroops(ref aliveTroops2, ref deadTroops2);
+        UpdateBuildings(ref buildings1);
+        UpdateBuildings(ref buildings2);
     }
 
-    private void UpdateTroops(ref List<TroopScript> alive, ref List<TroopScript> dead, ref List<TroopScript> enemies)
+    private void UpdateTroops(ref List<TroopScript> alive, ref List<TroopScript> dead)
     {
         //Given a reference to alive and dead lists, update each troop, moving it to the necessary dead list if needed.
         for (int i = alive.Count - 1; i >= 0; i--)
@@ -108,19 +112,17 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                troop.UpdateEnemies(ref enemies);
                 troop.OnUpdate(); //Calls OnUpdate for the respective troop.
                 //OnUpdate should call movement, and attacking
             }
         }
     }
 
-    private void UpdateBuildings(ref List<BuildingScript> buildings, ref List<TroopScript> enemies)
+    private void UpdateBuildings(ref List<BuildingScript> buildings)
     {
         for (int i = buildings.Count - 1; i >= 0; i--)
         {
             BuildingScript building = buildings[i];
-            building.UpdateEnemies(ref enemies);
             building.OnUpdate();
         }
 

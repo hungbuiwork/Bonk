@@ -6,7 +6,7 @@ public class TroopScript : UnitScript
 {
     [SerializeField]
     protected Rigidbody2D rb;
-	protected Health health;
+	public Health health;
 	protected bool troopIsDead;
 	protected float speed;
 
@@ -17,25 +17,20 @@ public class TroopScript : UnitScript
 
     public override void OnUpdate()
     {
-		rb.velocity = new Vector3(0,0,0);
-		
 		TroopScript target = GetClosestEnemy ();
-		Vector3 toTarget = target.gameObject.transform.position - transform.position;
-		
-        if (toTarget.magnitude > range)
+		Vector2 toTarget = target.gameObject.transform.position - transform.position;
+		if (toTarget.magnitude <= range && canFire)
 		{
-			rb.velocity = toTarget.normalized * speed;
+			StartCoroutine(FireProjectile(toTarget.normalized));
 		}
-        else
+		
+        if (toTarget.magnitude > range - 0.05f)
 		{
-			if (toTarget.magnitude < range)
-			{
-				rb.velocity = -toTarget.normalized * speed;
-			}
-			if (canFire)
-			{
-				StartCoroutine(FireProjectile(toTarget.normalized));
-			}
+			rb.MovePosition(rb.position + toTarget.normalized * speed * Time.fixedDeltaTime);
+		}
+        if (toTarget.magnitude < range - 0.1f)
+		{
+			rb.MovePosition(rb.position - toTarget.normalized * speed * Time.fixedDeltaTime);
 		}
     }
 	

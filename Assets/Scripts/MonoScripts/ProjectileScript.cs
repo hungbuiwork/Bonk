@@ -14,6 +14,7 @@ public class ProjectileScript : MonoBehaviour
         Rigidbody2D projectileRb = GetComponent<Rigidbody2D>();
 		projectileRb.velocity = projectileSpeed * projectileDirection;
 		Object.Destroy(gameObject, projectileLifetime);
+		damage = projectileDamage;
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -22,8 +23,7 @@ public class ProjectileScript : MonoBehaviour
         {
 			if (col.gameObject == enemies[i].gameObject)
 			{
-				Health enemyHealth = enemies[i].GetComponent<Health>();
-				enemyHealth.Damage(damage);
+				enemies[i].health.Damage(damage);
 				Object.Destroy(gameObject);
 			}
 		}

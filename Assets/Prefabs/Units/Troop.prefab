@@ -245,7 +245,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 3533714691401216539}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 0}
+  enemies: []
+  rb: {fileID: 0}
 --- !u!1 &5372705346804729319
 GameObject:
   m_ObjectHideFlags: 0
