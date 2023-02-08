@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ede2fd19c357a54bb2f4b3f6b97b326, type: 3}
   m_Name: Essence
   m_EditorClassIdentifier: 
-  _name: Essence
-  icon: {fileID: 21300000, guid: 47d9d270483767d44b2ef0a8da994f67, type: 3}
+  _name: Blood
+  icon: {fileID: 1642988536, guid: cc09408c56fba10468001ebf3e3b9dcd, type: 3}
