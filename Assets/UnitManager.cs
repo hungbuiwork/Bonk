@@ -132,11 +132,11 @@ public class UnitManager : MonoBehaviour
         //Current win conditions are complete death of one team.
         if (aliveTroops1.Count == 0)
         {
-            if (onWin != null) { onWin(1); } //Team 1 won
+            if (onWin != null) { onWin(2); } //Team 1 won
 
         }
         else if (aliveTroops2.Count == 0){
-            if (onWin != null) { onWin(2); } //Team 2 won
+            if (onWin != null) { onWin(1); } //Team 2 won
         }
     }
 
@@ -146,7 +146,7 @@ public class UnitManager : MonoBehaviour
         //Will change later!
         Debug.Log("SOME TEAM HAS WON THE GAME");
         DestroyTroopList(ref aliveTroops1);
-        DestroyTroopList(ref aliveTroops1);
+        DestroyTroopList(ref aliveTroops2);
         DestroyTroopList(ref deadTroops1);
         DestroyTroopList(ref deadTroops2);
         DestroyBuildingList(ref buildings1);
