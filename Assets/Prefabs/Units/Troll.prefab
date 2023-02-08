@@ -590,4 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee91e6c0d8c8b34fa85ee47d9cc8843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
+  enemies: []
+  rb: {fileID: 0}

@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
                 Die();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             //DELETE LATER: FOR TESTING PURPOSES ONLY
             Damage(10);

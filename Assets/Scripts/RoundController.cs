@@ -16,6 +16,8 @@ public class RoundController : MonoBehaviour
     public UnitManager unitManager;
 
     public bool phase_debug;
+    public int scoreTeam1;
+    public int scoreTeam2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +29,28 @@ public class RoundController : MonoBehaviour
             Debug.LogError("MUST ATTACH UNIT MANAGER");
         }
         unitManager.onWin += WinRound;
-
+        scoreTeam1 = scoreTeam2 = 0;
     }
 
     void WinRound(int i)
     {
-        Debug.Log("Player " + i.ToString() + " won the round");
-        //TODO: Add to score. i = 1 means team 1 won the round. i = 2 means team 2 won the round.
-        //TODO: track the score
+        if (i == 1)
+        {
+            scoreTeam1 += 1;
+        }
+        else if (i == 2)
+        {
+            scoreTeam2 += 1;
+        }
 
-        //TODO: check if either team wins the entire game.
-        //if the win condition is not yet met(for the entire game), change to the next phase
+        //TODO: add conditions to win the game
+
         NextPhase();
+    }
 
+    void WinGame(int i)
+    {
+        //TODO: Do stuff that wins the game
     }
     // Update is called once per frame
     void Update()
