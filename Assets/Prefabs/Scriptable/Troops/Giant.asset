@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Giant
   m_EditorClassIdentifier: 
   Name: 24 Karrot
-  Description: 
-  Icon: {fileID: 21300000, guid: 6b3b8ef492edc304f9230dc368e8af5c, type: 3}
-  CurrencyType: {fileID: 0}
-  CostAmount: 6
+  Description: thicc
+  Icon: {fileID: 1028645683, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
+  CurrencyType: {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
+  CostAmount: 8
   Content: {fileID: 7117113348252867541, guid: 5441b1fc0b6d2424b86f1bac2bb58141, type: 3}

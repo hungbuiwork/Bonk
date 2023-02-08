@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
@@ -142,9 +143,14 @@ public class UnitManager : MonoBehaviour
 
     private void CleanUpOnWin(int teamWon)
     {
-        //for now, lets just clear all the lists when a game is won.
-        //Will change later!
-        Debug.Log("SOME TEAM HAS WON THE GAME");
+        //1) TODO: Play any animations, etc 
+        //2) Clear the units on the board
+        Invoke("DestroyAllUnits", 3);
+    }
+
+    private void DestroyAllUnits()
+    {
+  
         DestroyTroopList(ref aliveTroops1);
         DestroyTroopList(ref aliveTroops2);
         DestroyTroopList(ref deadTroops1);

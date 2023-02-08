@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49ebb0661a43d745a35d4c8963483f3, type: 3}
   m_Name: Troll
   m_EditorClassIdentifier: 
-  Name: Troll
-  Description: Is a troll.
+  Name: sHreK?
+  Description: somebody once told me the world was gonna roll me... I aint the sharpest
+    tool in the shed.
   Icon: {fileID: -2099829022, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
   CurrencyType: {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
-  CostAmount: 6
+  CostAmount: 2
   Content: {fileID: 7117113348252867541, guid: f9c2c6c9cb8985348af3d3808b8d1535, type: 3}
