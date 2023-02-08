@@ -7,10 +7,13 @@ public class BuildingScript : UnitScript
     public override void OnUpdate()
     {
 		TroopScript target = GetClosestEnemy();
-		Vector2 toTarget = target.gameObject.transform.position - transform.position;
-        if (toTarget.magnitude <= range && canFire)
+		if (target != null)
 		{
-			StartCoroutine(FireProjectile(toTarget.normalized));
+			Vector2 toTarget = target.gameObject.transform.position - transform.position;
+			if (toTarget.magnitude <= range && canFire)
+			{
+				StartCoroutine(FireProjectile(toTarget.normalized));
+			}
 		}
     }
 	

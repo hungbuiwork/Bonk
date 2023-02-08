@@ -23,7 +23,7 @@ public class ProjectileScript : MonoBehaviour
         {
 			if (col.gameObject == enemies[i].gameObject)
 			{
-				enemies[i].health.Damage(damage);
+				enemies[i].Damage(damage);
 				Object.Destroy(gameObject);
 			}
 		}
