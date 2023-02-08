@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68287e7e613777c4f8e1a94ef375c20c, type: 3}
+  m_Name: GiantStats
+  m_EditorClassIdentifier: 
+  aliveSprite: {fileID: 1028645683, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
+  deadSprite: {fileID: -780005497, guid: cc09408c56fba10468001ebf3e3b9dcd, type: 3}
+  projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
+  projectileRange: 2
+  projectileRate: 1
+  projectileSpeed: 4
+  projectileLifetime: 1
+  projectileDamage: 2
+  speed: 1
+  maxHealth: 20

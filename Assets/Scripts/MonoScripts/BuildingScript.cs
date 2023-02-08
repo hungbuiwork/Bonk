@@ -10,7 +10,7 @@ public class BuildingScript : UnitScript
 		if (target != null)
 		{
 			Vector2 toTarget = target.gameObject.transform.position - transform.position;
-			if (toTarget.magnitude <= range && canFire)
+			if (toTarget.magnitude <= unitStats.projectileRange && canFire)
 			{
 				StartCoroutine(FireProjectile(toTarget.normalized));
 			}
@@ -19,6 +19,7 @@ public class BuildingScript : UnitScript
 	
 	private void Awake ()
 	{
+		spriteRenderer.sprite = unitStats.aliveSprite;
 		canFire = true;
 	}
 }

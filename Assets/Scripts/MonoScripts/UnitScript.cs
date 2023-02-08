@@ -4,16 +4,12 @@ using UnityEngine;
 
 public abstract class UnitScript : MonoBehaviour
 {
-	[SerializeField] private GameObject projectilePrefab;
-    [SerializeField]
 	protected List<TroopScript> enemies;
 	protected bool canFire;
-	
-	protected float range;
-	protected float projectileRate;
-	protected float projectileSpeed;
-	protected float projectileLifetime;
-	protected int projectileDamage;
+	[SerializeField]
+	protected UnitStats unitStats;
+	[SerializeField]
+	protected SpriteRenderer spriteRenderer;
 	
     public void UpdateEnemies(ref List<TroopScript> newEnemies)
     {
@@ -42,11 +38,12 @@ public abstract class UnitScript : MonoBehaviour
     {
 		canFire = false;
 		
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(unitStats.projectilePrefab, transform.position, Quaternion.identity);
 		ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-		projectileScript.SetValues(ref enemies, direction, projectileSpeed, projectileLifetime, projectileDamage);
+		float projectileLifetime = unitStats.projectileRange / unitStats.projectileSpeed;
+		projectileScript.SetValues(ref enemies, direction, unitStats.projectileSpeed, projectileLifetime, unitStats.projectileDamage);
 		
-		yield return new WaitForSeconds(projectileRate);
+		yield return new WaitForSeconds(unitStats.projectileRate);
 		canFire = true;
     }
 

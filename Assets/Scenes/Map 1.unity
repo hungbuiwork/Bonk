@@ -2480,27 +2480,11 @@ PrefabInstance:
       objectReference: {fileID: 374321734}
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: currentIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2eee1dc7f0e3f154aa83f6d1fe3211f1, type: 2}
-    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: items.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b1e6e538b43f4d544b490bf249da97c5, type: 2}
     - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_Name
       value: TroopShop2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5089634699603833566, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_RootOrder
@@ -4333,27 +4317,11 @@ PrefabInstance:
       objectReference: {fileID: 374321734}
     - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: currentIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2eee1dc7f0e3f154aa83f6d1fe3211f1, type: 2}
-    - target: {fileID: 5089634699603833560, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: items.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b1e6e538b43f4d544b490bf249da97c5, type: 2}
     - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_Name
       value: TroopShop
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089634699603833564, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5089634699603833566, guid: e9fcdffc69febbf47b475dee0fdfea00, type: 3}
       propertyPath: m_RootOrder

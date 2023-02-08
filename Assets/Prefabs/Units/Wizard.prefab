@@ -113,7 +113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.7}
+  m_AnchoredPosition: {x: 0, y: -0.25}
   m_SizeDelta: {x: 68.11, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517266211
@@ -180,10 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slider: {fileID: 517266211}
-  HealthScript: {fileID: 7117113348662915856}
+  troopScript: {fileID: 1229962192030048757}
   fill: {fileID: 1306854522}
-  LowHealth: {r: 1, g: 0, b: 0, a: 1}
-  HighHealth: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1306854520
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +353,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 344012151
+  m_SortingLayerID: 111379143
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2079836747
@@ -409,7 +407,7 @@ GameObject:
   - component: {fileID: 7117113347231589966}
   - component: {fileID: 7117113347231589967}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -471,7 +469,7 @@ SpriteRenderer:
   m_SortingLayerID: 111379143
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 46105531, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -479,9 +477,9 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &7117113348252867541
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +491,7 @@ GameObject:
   - component: {fileID: 7117113348252867539}
   - component: {fileID: 7117113348252867538}
   - component: {fileID: 7117113348252867566}
-  - component: {fileID: 7117113348662915856}
+  - component: {fileID: 1229962192030048757}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -531,7 +529,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -565,7 +563,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7117113348662915856
+--- !u!114 &1229962192030048757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -574,9 +572,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7117113348252867541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee91e6c0d8c8b34fa85ee47d9cc8843, type: 3}
+  m_Script: {fileID: 11500000, guid: 9337a406fce7821499929be2679cbc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
-  enemies: []
-  rb: {fileID: 0}
+  unitStats: {fileID: 11400000, guid: 000eb79af35745645867466c5676c4ef, type: 2}
+  spriteRenderer: {fileID: 7117113347231589967}

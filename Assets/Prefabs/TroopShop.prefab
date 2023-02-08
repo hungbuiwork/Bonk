@@ -48,7 +48,7 @@ MonoBehaviour:
   InventoryKeys:
   - {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
   - {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
-  InventoryValues: 5a00000064000000
+  InventoryValues: 0a0000000f000000
 --- !u!114 &5089634699603833560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,9 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 786695bb68c8fa347a001b2368988602, type: 2}
-  - {fileID: 11400000, guid: 3e6574445b764ac41bb0d633e5479257, type: 2}
-  - {fileID: 11400000, guid: d9e2372ee60f0d54789ca2d6458ba712, type: 2}
+  - {fileID: 11400000, guid: 2eee1dc7f0e3f154aa83f6d1fe3211f1, type: 2}
+  - {fileID: 11400000, guid: 1ebe147e36a99bc4cb0d923fba0133d2, type: 2}
+  - {fileID: 11400000, guid: 01d3988034f60bc40b14e93561f62a2a, type: 2}
+  - {fileID: 11400000, guid: 503c63fe54380ae4eb93a56778aa79f5, type: 2}
+  - {fileID: 11400000, guid: 1b63826f3c90d5e4584735d922fb7fcc, type: 2}
+  - {fileID: 11400000, guid: b1e6e538b43f4d544b490bf249da97c5, type: 2}
   currentIndex: 0
   inventory: {fileID: 5089634699603833561}
   cursor: {fileID: 0}
+  team: 0
+  unitManager: {fileID: 0}

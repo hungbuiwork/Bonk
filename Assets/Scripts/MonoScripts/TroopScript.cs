@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class TroopScript : UnitScript
 {
-    [SerializeField]
     protected Rigidbody2D rb;
-	public float health { get; set; }
-	public float maxHealth { get; private set; }
+	private float health;
 	public delegate void OnDeath(float health);
 	public OnDeath onDeath;
 	public delegate void OnReceiveDamage(float health);
@@ -15,7 +13,6 @@ public class TroopScript : UnitScript
 	public delegate void OnReceiveHealth(float health);
 	public OnReceiveHealth onReceiveHealth;
 	protected bool troopIsDead;
-	protected float speed;
 	private float tooFar = -0.05f;
 	private float tooClose = 0.1f;
 
@@ -30,18 +27,18 @@ public class TroopScript : UnitScript
 		if (target != null)
 		{
 			Vector2 toTarget = target.gameObject.transform.position - transform.position;
-			if (toTarget.magnitude <= range && canFire)
+			if (toTarget.magnitude <= unitStats.projectileRange && canFire)
 			{
 				StartCoroutine(FireProjectile(toTarget.normalized));
 			}
 			
-			if (toTarget.magnitude > range + tooFar)
+			if (toTarget.magnitude > unitStats.projectileRange + tooFar)
 			{
-				rb.MovePosition(rb.position + toTarget.normalized * speed * Time.fixedDeltaTime);
+				rb.MovePosition(rb.position + toTarget.normalized * unitStats.speed * Time.fixedDeltaTime);
 			}
-			if (toTarget.magnitude < range - tooClose)
+			if (toTarget.magnitude < unitStats.projectileRange - tooClose)
 			{
-				rb.MovePosition(rb.position - toTarget.normalized * speed * Time.fixedDeltaTime);
+				rb.MovePosition(rb.position - toTarget.normalized * unitStats.speed * Time.fixedDeltaTime);
 			}
 		}
     }
@@ -50,8 +47,9 @@ public class TroopScript : UnitScript
 	{
 		rb = GetComponent<Rigidbody2D>();
 		
+		spriteRenderer.sprite = unitStats.aliveSprite;
 		troopIsDead = false;
-		health = maxHealth;
+		health = unitStats.maxHealth;
 		canFire = true;
 	}
 	
@@ -69,15 +67,16 @@ public class TroopScript : UnitScript
 	public void Heal(int amount)
     {
         health += amount;
-        if (health > maxHealth)
+        if (health > unitStats.maxHealth)
         {
-            health = maxHealth;
+            health = unitStats.maxHealth;
         }
         if (onReceiveDamage != null) onReceiveHealth(health);
     }
 	
     private void Die()
     {
+		spriteRenderer.sprite = unitStats.deadSprite;
 		troopIsDead = true;
         //Emit a death delegate
         if (onDeath != null)
@@ -85,4 +84,9 @@ public class TroopScript : UnitScript
             onDeath(health); 
         }
     }
+	
+	public float GetMaxHealth()
+	{
+		return unitStats.maxHealth;
+	}
 }

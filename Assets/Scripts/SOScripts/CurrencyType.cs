@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ICS167/CurrencyType")]
+[CreateAssetMenu(menuName = "ICS167/CurrencyType")]
 public class CurrencyType : ScriptableObject
 {
     [SerializeField]
