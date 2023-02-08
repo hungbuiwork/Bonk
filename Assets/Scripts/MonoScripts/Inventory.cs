@@ -10,11 +10,15 @@ public class Inventory : MonoBehaviour
     /// Inventory script, used to manage inventory of (currently just "Gold").
     /// </summary>
     ///
- 
+
     [SerializeField]
     private List<CurrencyType> InventoryKeys;
     [SerializeField]
     private List<int> InventoryValues;
+    [SerializeField]
+    private List<CurrencyType> currencyPerRoundKeys; //delete later
+    [SerializeField]
+    private List<int> currencyPerRoundValues; //delete later
 
     private Dictionary<CurrencyType, int> currencies = new Dictionary<CurrencyType, int>();
 
@@ -26,6 +30,21 @@ public class Inventory : MonoBehaviour
         {
             currencies.Add(InventoryKeys[i], InventoryValues[i]);
         }
+        currencyPerRoundKeys = new List<CurrencyType>(InventoryKeys);
+        currencyPerRoundValues= new List<int>(InventoryValues);
+        GameObject.FindObjectOfType<RoundController>().beginPrep += resetCurrencyPerRound; //Find round controller
+    }
+
+    public void resetCurrencyPerRound() //Resets currency per round
+    {
+        Debug.LogError("RESETTING");
+        currencies.Clear();
+        for (int i = 0; i < currencyPerRoundKeys.Count; i++)
+        {
+            currencies.Add(currencyPerRoundKeys[i], currencyPerRoundValues[i]);
+        }
+        Refresh();
+
     }
     public Dictionary<CurrencyType, int> GetInventory()
     {
@@ -40,6 +59,7 @@ public class Inventory : MonoBehaviour
         {
             InventoryKeys.Add(key);
             InventoryValues.Add(value);
+            onResouceChanged(key, value);
         }
 
 
