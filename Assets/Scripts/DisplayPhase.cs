@@ -18,8 +18,8 @@ public class DisplayPhase : MonoBehaviour
     void Update()
     {
         //possible improvement: dont update every frame/only update text when an event is fired
-        scorePlayer1.text = "P1 Score: " + round.scoreTeam1.ToString();
-        scorePlayer2.text= "P2 Score: " + round.scoreTeam2.ToString();
+        scorePlayer1.text = round.scoreTeam1.ToString();
+        scorePlayer2.text= round.scoreTeam2.ToString();
         if(round.isStandbyPhase)
         {
             phase.text = "Standby Phase";
