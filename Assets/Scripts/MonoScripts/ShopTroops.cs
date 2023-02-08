@@ -21,17 +21,15 @@ public class ShopTroops : Shop
     }
     public override bool PurchaseCurrent(Inventory inventory)
     {
-        //First, make the purchase
+        //Purchase the currently selected item
         bool result = base.PurchaseCurrent(inventory);
         if (result)
         {
             //Instantiate object
             GameObject instance = Instantiate(GetCurrent().Content, cursor.position, Quaternion.identity);
             //Add Object to the Unit Manager(to manage the units for the round)
-            TroopScript troop = instance.GetComponent<TroopScript>(); //PROBLEM: Troopscript 
-            BuildingScript building = instance.GetComponent<BuildingScript>(); //PROBLEM: 
-            Debug.Log(troop);
-            Debug.Log(instance);
+            TroopScript troop = instance.GetComponent<TroopScript>();
+            BuildingScript building = instance.GetComponent<BuildingScript>();
             if (troop != null)
             {
                 unitManager.AddTroop(team, troop);

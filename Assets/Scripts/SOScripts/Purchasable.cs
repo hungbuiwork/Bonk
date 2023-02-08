@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ICS167/Purchasable")]
+[CreateAssetMenu(fileName = "ICS167/Purchasable")]
 public class Purchasable : ScriptableObject
 {
-    ///UNTESTED. (remove this line when tested)
     /// <summary>
-    /// Base class for purchasables
+    /// a Purchasable is the information, costs, and content that is used in the shop.
     /// </summary>
 
     //Item information
