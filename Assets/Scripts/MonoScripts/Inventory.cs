@@ -32,18 +32,18 @@ public class Inventory : MonoBehaviour
         }
         currencyPerRoundKeys = new List<CurrencyType>(InventoryKeys);
         currencyPerRoundValues= new List<int>(InventoryValues);
-        GameObject.FindObjectOfType<RoundController>().beginPrep += resetCurrencyPerRound; //Find round controller
+        GameObject.FindObjectOfType<RoundController>().beginStandby += resetCurrencyPerRound; //Find round controller
     }
 
     public void resetCurrencyPerRound() //Resets currency per round
     {
-        Debug.LogError("RESETTING");
         currencies.Clear();
         for (int i = 0; i < currencyPerRoundKeys.Count; i++)
         {
             currencies.Add(currencyPerRoundKeys[i], currencyPerRoundValues[i]);
         }
         Refresh();
+        if (currencyPerRoundValues.Count >= 2) { currencyPerRoundValues[1] += 10; }//every round, give everyone 10 more blood essence
 
     }
     public Dictionary<CurrencyType, int> GetInventory()

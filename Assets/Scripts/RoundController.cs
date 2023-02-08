@@ -20,7 +20,7 @@ public class RoundController : MonoBehaviour
     public int scoreTeam1;
     public int scoreTeam2;
 
-    public Action beginBattle, beginPrep, beginStandby;
+    public Action beginBattle, beginStandby;
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +107,6 @@ public class RoundController : MonoBehaviour
         {
             isStandbyPhase = false;
             isPrepPhase = true;
-            beginPrep();
             timeManager.StartPrep();
         }
 
@@ -115,7 +114,6 @@ public class RoundController : MonoBehaviour
         {
             isPrepPhase = false;
             isPrepPhase2 = true;
-            beginPrep();
             timeManager.StartPrep();
         }
 
@@ -131,7 +129,7 @@ public class RoundController : MonoBehaviour
         {
             isBattlePhase = false;
             isStandbyPhase = true;
-
+            beginStandby();
             timeManager.StartStandby();
         }
 

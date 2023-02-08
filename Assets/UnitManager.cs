@@ -143,7 +143,7 @@ public class UnitManager : MonoBehaviour
 
     private void CleanUpOnWin(int teamWon)
     {
-        //1) TODO: Play any animations, etc 
+        //1) TODO: Play any animations, etc , display who won
         //2) Clear the units on the board
         Invoke("DestroyAllUnits", 3);
     }
