@@ -45,3 +45,6 @@ TagManager:
   - name: Unit
     uniqueID: 111379143
     locked: 0
+  - name: Health Bar
+    uniqueID: 344012151
+    locked: 0

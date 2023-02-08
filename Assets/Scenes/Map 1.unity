@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.47843137, g: 0.54901963, b: 0.65882355, a: 0.67058825}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3971,7 +3971,7 @@ RectTransform:
   - {fileID: 746178646}
   - {fileID: 1277103112}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4250,14 +4250,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor2
       objectReference: {fileID: 0}
-    - target: {fileID: 2317375030771880831, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2317375030771880831, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
 --- !u!4 &1771688595 stripped
@@ -4321,7 +4313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.47763142, g: 0.55069214, b: 0.6603774, a: 0.67058825}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4649,14 +4641,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor
       objectReference: {fileID: 0}
-    - target: {fileID: 2317375030771880831, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2317375030771880831, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
 --- !u!1001 &5089634700432517453
@@ -4755,13 +4739,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6654493990081844552, guid: cb6cc1578b1b2b547ae59382955d648b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6654493990146481899, guid: cb6cc1578b1b2b547ae59382955d648b, type: 3}
       propertyPath: m_Name
       value: Map 1
       objectReference: {fileID: 0}
     - target: {fileID: 6654493990146481901, guid: cb6cc1578b1b2b547ae59382955d648b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6654493990146481901, guid: cb6cc1578b1b2b547ae59382955d648b, type: 3}
       propertyPath: m_LocalPosition.x
