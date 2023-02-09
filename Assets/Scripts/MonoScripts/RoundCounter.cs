@@ -5,20 +5,21 @@ using TMPro;
 
 public class RoundCounter : MonoBehaviour
 {
+    /// <summary>
+    /// Displays the counter text in the UI.
+    /// </summary>
 
-    public TextMeshProUGUI counter;
-    public RoundController round;
-    
-    public bool stopCount = false;
-    public int numOfRounds = 0;
+    [SerializeField]
+    private TextMeshProUGUI counter; //Counter text
+    [SerializeField]
+    private RoundController round;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private bool stopCount = false;
+    [SerializeField]
+    private int numOfRounds = 0; //currently unused
 
-    // Update is called once per frame
+
     void Update()
     {
         if(round.isStandbyPhase && !stopCount)

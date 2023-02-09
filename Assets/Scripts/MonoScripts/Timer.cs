@@ -5,44 +5,39 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-
+    /// <summary>
+    /// Manages the time between phases in the round controller.
+    /// </summary>
     [Header("Component")]
-    public TextMeshProUGUI timerText;
+    [SerializeField]
+    private TextMeshProUGUI timerText;
 
     [Header("Timer Settings")]
-    public float currentTime;
-    public bool countDown;
+    [SerializeField] private float currentTime;
+    [SerializeField] private bool countDown;
 
     [Header("Limit Settings")]
-    public bool hasLimit;
-    public float timerLimit;
+    [SerializeField] private bool hasLimit;
+    [SerializeField] private float timerLimit;
 
     [Header("Standby Phase Duration")]
-    public float standbyDuration;
+    [SerializeField] private float standbyDuration;
 
     [Header("Prep Phase Duration")]
-    public float prepDuration;
+    [SerializeField] private float prepDuration;
 
     [Header("Battle Phase Duration")]
-    public float battleDuration;
+    [SerializeField] private float battleDuration;
 
 
      
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //currentTime = 0;
-        // you can just adjust the time per phase via inspector
-    } 
-
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log("timer is counting...");
-
+        //TODO in future: Improve in future by using observers instead of checking every frame.
+        //Sets the timer text, and updates the time
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
+        //set color depending on how much time left
         if (currentTime < 10) { timerText.color = Color.red; }
         else if (currentTime < 20) { timerText.color = Color.yellow; }
         else { timerText.color = Color.green; }
@@ -51,7 +46,6 @@ public class Timer : MonoBehaviour
         {
             currentTime = timerLimit;
             SetTimerText();
-            //timerText.color = Color.red;
         }
 
 
@@ -71,19 +65,16 @@ public class Timer : MonoBehaviour
     public void StartPrep()
     {
         currentTime = prepDuration;
-        //timerText.color = Color.white;
     }
 
     public void StartBattle()
     {
         currentTime = battleDuration;
-        //timerText.color = Color.green;
     }
 
     public void StartStandby()
     {
         currentTime = standbyDuration;
-        //timerText.color = Color.blue;
     }
 
     public float GetCurrentTime()

@@ -5,19 +5,25 @@ using TMPro;
 
 public class DisplayPhase : MonoBehaviour
 {
-
+    /// <summary>
+    /// Displays phase and scores of the game
+    /// </summary>
     [Header("Component")]
-    public TextMeshProUGUI phase;
-    public TextMeshProUGUI nextPhase;
-    public TextMeshProUGUI scorePlayer1;
-    public TextMeshProUGUI scorePlayer2;
-    public RoundController round;
+    [SerializeField]
+    private TextMeshProUGUI phase;
+    [SerializeField]
+    private TextMeshProUGUI nextPhase;
+    [SerializeField]
+    private TextMeshProUGUI scorePlayer1;
+    [SerializeField]
+    private TextMeshProUGUI scorePlayer2;
+    [SerializeField]
+    private RoundController round;
 
 
-    // Update is called once per frame
     void Update()
     {
-        //possible improvement: dont update every frame/only update text when an event is fired
+        //possible improvement in future: dont update every frame/only update text when an event is fired
         scorePlayer1.text = round.scoreTeam1.ToString();
         scorePlayer2.text= round.scoreTeam2.ToString();
         if(round.isStandbyPhase)

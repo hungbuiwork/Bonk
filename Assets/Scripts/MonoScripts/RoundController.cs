@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class RoundController : MonoBehaviour
 {
-    public Timer timeManager;
+    /// <summary>
+    /// Controls the rounds and the phases inside.
+    /// </summary>
+    [SerializeField]
+    private Timer timeManager;
 
     public float currentTime;
 
@@ -14,9 +18,11 @@ public class RoundController : MonoBehaviour
     public bool isPrepPhase2; // prep phase for player 2
     public bool isBattlePhase;
 
-    public UnitManager unitManager;
+    [SerializeField]
+    private UnitManager unitManager;
 
-    public bool phase_debug;
+    [SerializeField]
+    private bool phase_debug;
     public int scoreTeam1;
     public int scoreTeam2;
 
@@ -46,7 +52,6 @@ public class RoundController : MonoBehaviour
             scoreTeam2 += 1;
         }
 
-        //TODO: add conditions to win the game
 
         NextPhase();
     }
@@ -55,7 +60,7 @@ public class RoundController : MonoBehaviour
     {
         //TODO: Do stuff that wins the game
     }
-    // Update is called once per frame
+
     void Update()
     {
         if(timeManager.CheckTimeOver())

@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public SceneController sceneController;
+    /// <summary>
+    /// Pause menu implementation.
+    /// </summary>
+    [SerializeField]
+    private SceneController sceneController;
 
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject warningMessage;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject warningMessage;
 
     public void Pause()
     {

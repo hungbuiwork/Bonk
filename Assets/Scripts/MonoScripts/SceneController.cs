@@ -5,26 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    /// <summary>
+    /// Controlls the visibility of UI elements depending on what phase the game is in
+    /// </summary>
+    /// 
+    [SerializeField]
     public RoundController round;
 
-
     [Header("Player 1 Stuff")]
-    [SerializeField] GameObject troopShop;
-    [SerializeField] GameObject cursor;
+    [SerializeField] private GameObject troopShop;
+    [SerializeField] private GameObject cursor;
 
-    [SerializeField] GameObject shopDisplay;
-    [SerializeField] GameObject inventoryDisplay;
+    [SerializeField] private GameObject shopDisplay;
+    [SerializeField] private GameObject inventoryDisplay;
 
-    [SerializeField] GameObject p1_fog;
+    [SerializeField] private GameObject p1_fog;
 
     [Header("Player 2 Stuff")]
-    [SerializeField] GameObject troopShop2;
-    [SerializeField] GameObject cursor2;
+    [SerializeField] private GameObject troopShop2;
+    [SerializeField] private GameObject cursor2;
 
-    [SerializeField] GameObject shopDisplay2;
-    [SerializeField] GameObject inventoryDisplay2;
+    [SerializeField] private GameObject shopDisplay2;
+    [SerializeField] private GameObject inventoryDisplay2;
 
-    [SerializeField] GameObject p2_fog;
+    [SerializeField] private GameObject p2_fog;
 
     
 
@@ -69,6 +73,8 @@ public class SceneController : MonoBehaviour
     
     void Update()
     {
+        //Sets the UI of the player depending on the round phase
+        //TODO: In future, improve the design by using observer pattern to listen for phase changes so that we dont have to update every frame
         if(round.isPrepPhase)
         {
             setPlayerUI(p1_objects, true);
@@ -102,13 +108,6 @@ public class SceneController : MonoBehaviour
         {
             player_objects[i].SetActive(isActive);
         }
-
-        // i can't get the foreach loop to work, it keep saying i'm missing curly bracket error
-        /*
-        foreach(var object in player_objects)
-        {
-            object.SetActive(isActive);
-        }*/
         
     }
 }
