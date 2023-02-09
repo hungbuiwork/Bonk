@@ -1,3 +1,7 @@
+// UnitStats.cs
+// By Cais Wang
+// Scriptable object for troop/building information
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ICS167/UnitStats")]
 public class UnitStats : ScriptableObject
 {
-    //Main objects
+    // Connected objects
     [Header("Objects")]
     [SerializeField]
     public Sprite aliveSprite;
@@ -14,7 +18,7 @@ public class UnitStats : ScriptableObject
     [SerializeField]
     public GameObject projectilePrefab;
 	
-	//Stat values
+	// Stat values
     [Header("Stats")]
     [SerializeField]
     public float projectileRange;
