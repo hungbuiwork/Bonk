@@ -17,8 +17,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
   projectileRange: 3
   projectileRate: 0.5
-  projectileSpeed: 4
-  projectileLifetime: 1
+  projectileSpeed: 3
   projectileDamage: 1
   speed: 2
   maxHealth: 10

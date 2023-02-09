@@ -15,10 +15,9 @@ MonoBehaviour:
   aliveSprite: {fileID: 46105531, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
   deadSprite: {fileID: -780005497, guid: cc09408c56fba10468001ebf3e3b9dcd, type: 3}
   projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
-  projectileRange: 4
+  projectileRange: 5
   projectileRate: 2
-  projectileSpeed: 4
-  projectileLifetime: 1
+  projectileSpeed: 3
   projectileDamage: 4
   speed: 0.5
   maxHealth: 20
