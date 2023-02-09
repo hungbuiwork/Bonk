@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Factory
   m_EditorClassIdentifier: 
   Name: Factory
-  Description: Blasts foes with powerful magic
+  Description: Blasts foes with powerful magic, with medium range
   Icon: {fileID: -855009319, guid: 667f74cdb5f38fb4a8c3c5ad6873ef6b, type: 3}
   CurrencyType: {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
-  CostAmount: 4
+  CostAmount: 3
   Content: {fileID: 1294042666134176788, guid: 910739cfd0298d34c83aeeb1773f0d10, type: 3}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49ebb0661a43d745a35d4c8963483f3, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  Name: Stone
-  Description: Guards quickly throw stones
+  Name: StoneSlinger
+  Description: Guards quickly chuck destructive stones to nearby enemies
   Icon: {fileID: 1182111219, guid: 4558d6787d131464b803e130dcc5d0b0, type: 3}
   CurrencyType: {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
   CostAmount: 2
