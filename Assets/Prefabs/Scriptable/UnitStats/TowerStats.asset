@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68287e7e613777c4f8e1a94ef375c20c, type: 3}
   m_Name: TowerStats
   m_EditorClassIdentifier: 
-  aliveSprite: {fileID: -354114218, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
+  aliveSprite: {fileID: 21300000, guid: c706f86f6fd02084f9a14727d08b844d, type: 3}
   deadSprite: {fileID: 0}
   projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
   projectileRange: 5
