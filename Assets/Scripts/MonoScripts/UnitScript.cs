@@ -1,9 +1,14 @@
+// UnitScript.cs
+// By Cais Wang
+// Provides base functionality for troops and buildings
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UnitScript : MonoBehaviour
 {
+	// List of enemy troops for targeting
 	protected List<TroopScript> enemies;
 	protected bool canFire;
 	[SerializeField]
@@ -11,11 +16,13 @@ public abstract class UnitScript : MonoBehaviour
 	[SerializeField]
 	protected SpriteRenderer spriteRenderer;
 	
+	// Set list of enemy troops after creation
     public void UpdateEnemies(ref List<TroopScript> newEnemies)
     {
         enemies = newEnemies;
     }
 
+	// Return TroopScript of closest enemy
 	protected TroopScript GetClosestEnemy()
     {
         TroopScript bestTarget = null;
@@ -34,6 +41,7 @@ public abstract class UnitScript : MonoBehaviour
         return bestTarget;
     }
 	
+	// Instantiate a projectile and prevent unit from firing for a while
 	protected IEnumerator FireProjectile(Vector3 direction)
     {
 		canFire = false;
@@ -47,5 +55,6 @@ public abstract class UnitScript : MonoBehaviour
 		canFire = true;
     }
 
+	// Provide abstract update function for main unit manager
     public abstract void OnUpdate();
 }
