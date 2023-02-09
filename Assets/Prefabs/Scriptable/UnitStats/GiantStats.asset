@@ -18,6 +18,6 @@ MonoBehaviour:
   projectileRange: 1.5
   projectileRate: 3
   projectileSpeed: 4
-  projectileDamage: 5
+  projectileDamage: 10
   speed: 0.25
   maxHealth: 50

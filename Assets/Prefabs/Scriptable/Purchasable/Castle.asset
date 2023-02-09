@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Castle
   m_EditorClassIdentifier: 
   Name: Castle
-  Description: Quickly shoots enemies in range
+  Description: Quickly shoots enemies in a medium range
   Icon: {fileID: 1246410781, guid: 1c9b6144d9e0ccb478a0e855a765be7c, type: 3}
   CurrencyType: {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
-  CostAmount: 5
+  CostAmount: 4
   Content: {fileID: 1294042666134176788, guid: eadcfca026e3b87408446cfdda6b8bbf, type: 3}
