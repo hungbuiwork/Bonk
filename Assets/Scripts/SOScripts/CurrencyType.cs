@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ICS167/CurrencyType")]
 public class CurrencyType : ScriptableObject
 {
+    /// <summary>
+    /// A currency type is an image and name related with a specific currency.
+    /// </summary>
     [SerializeField]
     private string _name;
     [SerializeField]

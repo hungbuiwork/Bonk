@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class RoundController : MonoBehaviour
     public bool phase_debug;
     public int scoreTeam1;
     public int scoreTeam2;
+
+    public Action beginBattle, beginStandby;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +107,6 @@ public class RoundController : MonoBehaviour
         {
             isStandbyPhase = false;
             isPrepPhase = true;
-
             timeManager.StartPrep();
         }
 
@@ -112,7 +114,6 @@ public class RoundController : MonoBehaviour
         {
             isPrepPhase = false;
             isPrepPhase2 = true;
-
             timeManager.StartPrep();
         }
 
@@ -120,7 +121,7 @@ public class RoundController : MonoBehaviour
         {
             isPrepPhase2 = false;
             isBattlePhase = true;
-
+            if (beginBattle != null) beginBattle();
             timeManager.StartBattle();
         }
 
@@ -128,7 +129,7 @@ public class RoundController : MonoBehaviour
         {
             isBattlePhase = false;
             isStandbyPhase = true;
-
+            beginStandby();
             timeManager.StartStandby();
         }
 

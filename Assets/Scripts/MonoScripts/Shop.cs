@@ -27,7 +27,7 @@ public class Shop : MonoBehaviour
     }
     public void Update()
     {
-        //DELETE LATER
+        //Controls: Change in future iteration to work with new input system
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Previous();

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class InventoryItemDisplay : MonoBehaviour
 {
+    /// <summary>
+    /// Displays an item in the inventory, changing the icon and text to match the currency type.
+    /// </summary>
     [SerializeField]
     public CurrencyType currency;
     [SerializeField]

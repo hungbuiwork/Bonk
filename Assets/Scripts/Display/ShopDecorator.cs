@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class ShopDecorator : MonoBehaviour
 {
+    /// <summary>
+    /// Displays the shop information and currently selected purchasable item, extending the Shop class .
+    /// </summary>
     [SerializeField] private Shop shop;
-
     [SerializeField] private Image currentImage;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI cost;
-    
     [SerializeField] private Image prevImage;
     [SerializeField] private Image nextImage;
-
     [SerializeField] private Image currencyImage;
 
     private void Start()

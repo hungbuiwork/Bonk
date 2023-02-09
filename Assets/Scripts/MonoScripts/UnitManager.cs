@@ -1,18 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
     /// <summary>
-    /// This script manages 2 teams of troops. Calls each troops update scripts, and manages
-    /// them when they die. Emits onWin action when one team loses all of its troops.
+    /// This script manages 2 teams of troops. Calls each troops and building update scripts, feeding them information about their enemis. Also manages them when they die
+    /// Emits onWin action when one team loses all of its troops.
     /// </summary>
 
 
     //Singleton pattern. ONLY ONE should exist in the scene.
-    public static UnitManager instance; 
+    private static UnitManager instance; 
 
 
     [SerializeField]
@@ -36,6 +37,7 @@ public class UnitManager : MonoBehaviour
   
     public void AddTroop(int team, TroopScript troop)
     {
+        //Add a troop to the respective team
         if (team == 1)
         {
 			troop.UpdateEnemies(ref aliveTroops2);
@@ -52,6 +54,7 @@ public class UnitManager : MonoBehaviour
     }
     public void AddBuilding(int team, BuildingScript building)
     {
+        //Add a building to the respective team
         if (team == 1)
         {
 			building.UpdateEnemies(ref aliveTroops2);
@@ -61,6 +64,10 @@ public class UnitManager : MonoBehaviour
         {
 			building.UpdateEnemies(ref aliveTroops1);
             buildings2.Add(building);
+        }
+        else
+        {
+            Debug.LogError("Team must be either 1 or 2");
         }
     }
     private void Awake()
@@ -81,11 +88,8 @@ public class UnitManager : MonoBehaviour
     
     public void OnUpdate()
     {
-        Debug.Log("Calling OnUpdate");
         CheckWinConditions();
         UpdateAllTroops();
-
-        
     }
 
     private void UpdateAllTroops()
@@ -103,7 +107,7 @@ public class UnitManager : MonoBehaviour
         for (int i = alive.Count - 1; i >= 0; i--)
         {
             TroopScript troop = alive[i];
-            if (troop.isDead()) //Create isDead for troopScript which determines if a troop is dead. Rename as needed
+            if (troop.isDead())
             {
                 Debug.Log("Removing troop");
 
@@ -112,14 +116,14 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                troop.OnUpdate(); //Calls OnUpdate for the respective troop.
-                //OnUpdate should call movement, and attacking
+                troop.OnUpdate(); //Calls OnUpdate for the respective troop if it is alive.
             }
         }
     }
 
     private void UpdateBuildings(ref List<BuildingScript> buildings)
     {
+        //Call the OnUpdate method of each building
         for (int i = buildings.Count - 1; i >= 0; i--)
         {
             BuildingScript building = buildings[i];
@@ -142,9 +146,14 @@ public class UnitManager : MonoBehaviour
 
     private void CleanUpOnWin(int teamWon)
     {
-        //for now, lets just clear all the lists when a game is won.
-        //Will change later!
-        Debug.Log("SOME TEAM HAS WON THE GAME");
+        //1) TODO: Play any animations, etc , display who won
+        //2) Clear the units on the board after a few seconds
+        Invoke("DestroyAllUnits", 2);
+    }
+
+    private void DestroyAllUnits()
+    {
+        //Destroys all gameobject units spawned in, and clears the lists
         DestroyTroopList(ref aliveTroops1);
         DestroyTroopList(ref aliveTroops2);
         DestroyTroopList(ref deadTroops1);
@@ -157,7 +166,7 @@ public class UnitManager : MonoBehaviour
     {
         for (int i = list.Count - 1; i >= 0; i--)
         {
-            Destroy(list[i].gameObject); //IDK IF THIS IS CORRECTLY WORKING LMAO
+            Destroy(list[i].gameObject);
         }
         list.Clear();
     }
