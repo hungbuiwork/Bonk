@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a49ebb0661a43d745a35d4c8963483f3, type: 3}
-  m_Name: Tower
+  m_Name: Archers
   m_EditorClassIdentifier: 
-  Name: Tower
-  Description: Shoots foes
-  Icon: {fileID: 1148174732, guid: c19b65096aa70554594904265dbc65c2, type: 3}
+  Name: Archers
+  Description: Takes time to reload
+  Icon: {fileID: 257997081, guid: 3f1f30a1a21798642b0c3ba8577f67ec, type: 3}
   CurrencyType: {fileID: 11400000, guid: 5ec64dead2150864aa0f12050e78d5a5, type: 2}
   CostAmount: 3
-  Content: {fileID: 1294042666134176788, guid: 83903d4c4bcebc941b7651efb3c15063, type: 3}
+  Content: {fileID: 1294042666134176788, guid: aff70531eb967734dacf7f13f13ee61c, type: 3}

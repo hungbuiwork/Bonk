@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68287e7e613777c4f8e1a94ef375c20c, type: 3}
-  m_Name: TowerStats
+  m_Name: StoneStats
   m_EditorClassIdentifier: 
-  aliveSprite: {fileID: 1148174732, guid: c19b65096aa70554594904265dbc65c2, type: 3}
+  aliveSprite: {fileID: 1182111219, guid: 4558d6787d131464b803e130dcc5d0b0, type: 3}
   deadSprite: {fileID: 0}
   projectilePrefab: {fileID: 1500759243973732985, guid: e6b68d6d052d18243aa31296289bf918, type: 3}
   projectileRange: 3
-  projectileRate: 1
+  projectileRate: 0.75
   projectileSpeed: 4
-  projectileDamage: 2
+  projectileDamage: 1
   speed: 0
   maxHealth: 0
