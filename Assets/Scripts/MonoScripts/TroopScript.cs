@@ -8,8 +8,9 @@ using UnityEngine;
 
 public class TroopScript : UnitScript
 {
-    protected Rigidbody2D rb;
-	private float health;
+    public Rigidbody2D rb;
+	private StateMachine sm;
+	public float health;
 	// Delegates in case something happens when troop dies, etc.
 	public delegate void OnDeath(float health);
 	public OnDeath onDeath;
@@ -19,30 +20,12 @@ public class TroopScript : UnitScript
 	public OnReceiveHealth onReceiveHealth;
 	protected bool troopIsDead;
 	// Buffer so the troop doesn't have to be at the exact edge of its range
-	private float tooFar = -0.05f;
-	private float tooClose = 0.1f;
+	public float tooClose = 0.2f;
 
 	// Move so that closest enemy is at edge of firing range and attack
     public override void OnUpdate()
     {
-		TroopScript target = GetClosestEnemy();
-		if (target != null)
-		{
-			Vector2 toTarget = target.gameObject.transform.position - transform.position;
-			if (toTarget.magnitude <= unitStats.projectileRange && canFire)
-			{
-				StartCoroutine(FireProjectile(toTarget.normalized));
-			}
-			
-			if (toTarget.magnitude > unitStats.projectileRange + tooFar)
-			{
-				rb.MovePosition(rb.position + toTarget.normalized * unitStats.speed * Time.fixedDeltaTime);
-			}
-			if (toTarget.magnitude < unitStats.projectileRange - tooClose)
-			{
-				rb.MovePosition(rb.position - toTarget.normalized * unitStats.speed * Time.fixedDeltaTime);
-			}
-		}
+		sm.UpdateState();
     }
 	
 	// Reset variables/objects and set sprite
@@ -54,13 +37,16 @@ public class TroopScript : UnitScript
 		troopIsDead = false;
 		health = unitStats.maxHealth;
 		canFire = true;
+		sm = GetComponent<StateMachine>();
+		sm.SetTroopScript(this);
+		sm.ChangeState(gameObject.AddComponent<TroopChaseState>());
 	}
 	
 	// Take damage and die if health drops below zero
 	public void Damage(int amount)
     {
         health -= amount;
-        if (health < 0)
+        if (health <= 0)
         {
             health = 0;
 			Die();
@@ -82,6 +68,7 @@ public class TroopScript : UnitScript
 	// Set dead sprite and variable
     private void Die()
     {
+		rb.velocity = Vector3.zero;
 		spriteRenderer.sprite = unitStats.deadSprite;
 		troopIsDead = true;
         // Emit a death delegate

@@ -9,21 +9,22 @@ using UnityEngine;
 public abstract class UnitScript : MonoBehaviour
 {
 	// List of enemy troops for targeting
+	protected List<TroopScript> allies;
 	protected List<TroopScript> enemies;
-	protected bool canFire;
-	[SerializeField]
-	protected UnitStats unitStats;
+	public bool canFire;
+	public UnitStats unitStats;
 	[SerializeField]
 	protected SpriteRenderer spriteRenderer;
 	
 	// Set list of enemy troops after creation
-    public void UpdateEnemies(ref List<TroopScript> newEnemies)
+    public void UpdateTeams(ref List<TroopScript> newAllies, ref List<TroopScript> newEnemies)
     {
+		allies = newAllies;
         enemies = newEnemies;
     }
 
 	// Return TroopScript of closest enemy
-	protected TroopScript GetClosestEnemy()
+	public TroopScript GetClosestEnemy()
     {
         TroopScript bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -42,7 +43,7 @@ public abstract class UnitScript : MonoBehaviour
     }
 	
 	// Instantiate a projectile and prevent unit from firing for a while
-	protected IEnumerator FireProjectile(Vector3 direction)
+	public IEnumerator FireProjectile(Vector3 direction)
     {
 		canFire = false;
 		

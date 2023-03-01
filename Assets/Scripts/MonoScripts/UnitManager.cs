@@ -40,12 +40,12 @@ public class UnitManager : MonoBehaviour
         //Add a troop to the respective team
         if (team == 1)
         {
-			troop.UpdateEnemies(ref aliveTroops2);
+			troop.UpdateTeams(ref aliveTroops1, ref aliveTroops2);
             aliveTroops1.Add(troop);
         }
         else if (team == 2)
         {
-			troop.UpdateEnemies(ref aliveTroops1);
+			troop.UpdateTeams(ref aliveTroops2, ref aliveTroops1);
             aliveTroops2.Add(troop);
         }
         else {
@@ -57,12 +57,12 @@ public class UnitManager : MonoBehaviour
         //Add a building to the respective team
         if (team == 1)
         {
-			building.UpdateEnemies(ref aliveTroops2);
+			building.UpdateTeams(ref aliveTroops1, ref aliveTroops2);
             buildings1.Add(building);
         }
         else if (team == 2)
         {
-			building.UpdateEnemies(ref aliveTroops1);
+			building.UpdateTeams(ref aliveTroops2, ref aliveTroops1);
             buildings2.Add(building);
         }
         else

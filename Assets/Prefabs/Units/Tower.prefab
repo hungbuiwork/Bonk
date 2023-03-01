@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294042666134176790}
   - component: {fileID: 1294042666093148410}
+  - component: {fileID: 1971584498341783174}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -45,8 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b595853808d042880a36ca75cea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFire: 0
   unitStats: {fileID: 11400000, guid: f9d69970b2fd4bf4196a1c4f5d7f24e8, type: 2}
   spriteRenderer: {fileID: 1294042666404145995}
+--- !u!114 &1971584498341783174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294042666134176788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1294042666404145993
 GameObject:
   m_ObjectHideFlags: 0

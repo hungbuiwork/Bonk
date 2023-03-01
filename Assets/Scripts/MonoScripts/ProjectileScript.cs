@@ -24,7 +24,7 @@ public class ProjectileScript : MonoBehaviour
     }
 
 	// If projectile collides with an enemy, damage the enemy and destroy the projectile
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
 		for (int i = 0; i < enemies.Count; i++)
         {
