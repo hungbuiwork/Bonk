@@ -8,6 +8,9 @@ public class RoundController : MonoBehaviour
     /// <summary>
     /// Controls the rounds and the phases inside.
     /// </summary>
+    /// 
+    static RoundController instance;
+
     [SerializeField]
     private Timer timeManager;
 
@@ -33,7 +36,21 @@ public class RoundController : MonoBehaviour
     private RoundCounter roundCounter; 
     public int maxRound;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("THERE IS ALREADY AN INSTANCE OF THE ROUND CONTROLLER");
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        unitManager.onFirstTroopPlacedTeam1 += timeManager.Resume;
+        unitManager.onFirstTroopPlacedTeam2 += timeManager.Resume;
+    }
     void Start()
     {
         
@@ -57,11 +74,11 @@ public class RoundController : MonoBehaviour
             scoreTeam2 += 1;
         }
 
-        // if tied, both team +1
+        // if tied, both team +0
         else if (i == 3)
         {
-            scoreTeam1 += 1;
-            scoreTeam2 += 1;
+            scoreTeam1 += 0;
+            scoreTeam2 += 0;
         }
 
         checkWin();
@@ -167,13 +184,14 @@ public class RoundController : MonoBehaviour
             isStandbyPhase = false;
             isPrepPhase = true;
             timeManager.StartPrep();
+            timeManager.Pause();
         }
 
         else if(isPrepPhase)
         {
             isPrepPhase = false;
             isPrepPhase2 = true;
-            timeManager.StartPrep();
+            timeManager.Pause();
         }
 
         else if(isPrepPhase2)
@@ -188,6 +206,7 @@ public class RoundController : MonoBehaviour
         {
             isBattlePhase = false;
             isStandbyPhase = true;
+            unitManager.DestroyAllUnits();
             beginStandby();
             timeManager.StartStandby();
         }

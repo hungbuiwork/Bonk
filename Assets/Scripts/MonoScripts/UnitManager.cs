@@ -34,18 +34,22 @@ public class UnitManager : MonoBehaviour
 
     public Action<int> onWin; //1 for team 1 and 2 for team 2
 
+    public Action onFirstTroopPlacedTeam1, onFirstTroopPlacedTeam2;
+
   
     public void AddTroop(int team, TroopScript troop)
     {
         //Add a troop to the respective team
         if (team == 1)
         {
+            if (aliveTroops1.Count== 0) { onFirstTroopPlacedTeam1();}
 			troop.UpdateTeams(ref aliveTroops1, ref aliveTroops2);
             aliveTroops1.Add(troop);
         }
         else if (team == 2)
         {
-			troop.UpdateTeams(ref aliveTroops2, ref aliveTroops1);
+            if (aliveTroops2.Count == 0) { onFirstTroopPlacedTeam2(); }
+            troop.UpdateTeams(ref aliveTroops2, ref aliveTroops1);
             aliveTroops2.Add(troop);
         }
         else {
@@ -156,7 +160,7 @@ public class UnitManager : MonoBehaviour
         Invoke("DestroyAllUnits", 2);
     }
 
-    private void DestroyAllUnits()
+    public void DestroyAllUnits()
     {
         //Destroys all gameobject units spawned in, and clears the lists
         DestroyTroopList(ref aliveTroops1);

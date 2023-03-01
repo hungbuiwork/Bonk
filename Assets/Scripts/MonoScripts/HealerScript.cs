@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class HealerScript : TroopScript
 {
-    // Start is called before the first frame update
-
     protected override void Awake()
     {
         base.Awake();
@@ -57,20 +55,9 @@ public class HealerScript : TroopScript
                 troop.Heal(unitStats.projectileDamage);
             }
         }
-        /*
-        GameObject projectile = Instantiate(unitStats.projectilePrefab, transform.position, Quaternion.identity);
-        ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-        float projectileLifetime = unitStats.projectileRange / unitStats.projectileSpeed;
-        projectileScript.SetValues(ref enemies, direction, unitStats.projectileSpeed, projectileLifetime, unitStats.projectileDamage);
-        */
 
         yield return new WaitForSeconds(unitStats.projectileRate);
         canFire = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

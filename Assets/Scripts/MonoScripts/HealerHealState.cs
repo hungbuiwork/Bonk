@@ -9,13 +9,14 @@ public class HealerHealState : State
         //calculate new position to walk to
         Vector3 newPosition = ((HealerScript)ts).GetHealPosition();
         Vector2 toTarget = newPosition - ts.transform.position;
-        ts.rb.velocity = toTarget.normalized * ts.unitStats.speed;
+        ts.rb.velocity = Vector2.zero;
+  
         if (ts.canFire)
         {
             ts.StartCoroutine(ts.UseMain(toTarget.normalized));
         }
 
-        if (toTarget.magnitude > ts.unitStats.projectileRange)
+        if (toTarget.magnitude > ts.unitStats.projectileRange * 3/4)
         {
             sm.ChangeState(gameObject.AddComponent<HealerPositionState>());
         }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Healer
   m_EditorClassIdentifier: 
   Name: Healer
-  Description: Heals nearby allies
+  Description: Heals allies nearby, hiding behind other allies. Cannot deal damage
   Icon: {fileID: -466769500, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
   CurrencyType: {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
   CostAmount: 12

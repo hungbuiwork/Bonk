@@ -29,13 +29,25 @@ public class Timer : MonoBehaviour
     [Header("Battle Phase Duration")]
     [SerializeField] private float battleDuration;
 
+    private bool Frozen = false;
 
-     
+
+    public void Pause()
+    {
+        Frozen = true;
+    }
+    public void Resume()
+    {
+        Frozen = false;
+    }
     void Update()
     {
         //TODO in future: Improve in future by using observers instead of checking every frame.
         //Sets the timer text, and updates the time
-        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+        if (!Frozen)
+        {
+            currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+        }
 
         //set color depending on how much time left
         if (currentTime < 10) { timerText.color = Color.red; }
