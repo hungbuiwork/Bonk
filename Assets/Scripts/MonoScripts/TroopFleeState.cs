@@ -1,9 +1,14 @@
+// UnitScript.cs
+// By Cais Wang
+// AI for troops in flee state
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TroopFleeState : State
 {
+	// Move away from closest enemy. If health exceeds max/4, transition to attack state
     public override void UpdateLogic()
 	{
 		TroopScript target = ts.GetClosestEnemy();
