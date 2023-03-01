@@ -134,7 +134,12 @@ public class UnitManager : MonoBehaviour
     private void CheckWinConditions()
     {
         //Current win conditions are complete death of one team.
-        if (aliveTroops1.Count == 0)
+        if (aliveTroops1.Count == 0 && aliveTroops2.Count == 0)
+        {
+            if (onWin != null) { onWin(3); }
+        }
+
+        else if (aliveTroops1.Count == 0)
         {
             if (onWin != null) { onWin(2); } //Team 1 won
 
