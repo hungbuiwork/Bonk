@@ -16,5 +16,5 @@ MonoBehaviour:
   Description: Heals nearby allies
   Icon: {fileID: -466769500, guid: 5b06e8e4fb529064981cc390bfcd035a, type: 3}
   CurrencyType: {fileID: 11400000, guid: 9bd80c62da997ff409dd4651308e84ca, type: 2}
-  CostAmount: 10
+  CostAmount: 12
   Content: {fileID: 7117113348252867541, guid: d166af137e282fd46ad7711751929018, type: 3}

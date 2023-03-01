@@ -19,13 +19,24 @@ public class HealerScript : TroopScript
         //Find the average position of nearby allies. A nearby ally is within a radius of the unit's heal range * 2
         int nearbyAllies = 0;
         Vector3 positions = Vector3.zero;
+        Vector3 closestAlly = Vector3.zero;
         foreach(TroopScript troop in allies) { 
+            if (troop == this)
+            {
+                continue;
+            }
             if(Vector3.Distance(troop.transform.position, this.transform.position) < unitStats.projectileRange * 2)
             {
                 nearbyAllies++;
                 positions += troop.transform.position;
+                if ((this.transform.position - troop.transform.position).magnitude < (this.transform.position - closestAlly).magnitude)
+                {
+                    closestAlly = troop.transform.position;
+                }
             }
         }
+        if (nearbyAllies == 0) { return closestAlly; }
+        
         Vector3 averagePosition = positions / nearbyAllies;
         //Slightly offset the position to be a little away from the closest source of danger
         Vector3 nearestDanger = GetClosestEnemy().transform.position;
@@ -36,7 +47,9 @@ public class HealerScript : TroopScript
     public override IEnumerator UseMain(Vector3 direction)
     {
         canFire = false;
-
+        GameObject projectile = Instantiate(unitStats.projectilePrefab, this.transform.position, Quaternion.identity);
+        projectile.transform.parent = this.transform;
+        projectile.transform.localScale = Vector3.one * unitStats.projectileRange;
         foreach(TroopScript troop in allies)
         {
             if (Vector3.Distance(troop.transform.position, this.transform.position) < unitStats.projectileRange)
