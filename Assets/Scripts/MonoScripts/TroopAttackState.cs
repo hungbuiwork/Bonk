@@ -13,7 +13,7 @@ public class TroopAttackState : State
 			ts.rb.velocity = Vector3.zero;
 			if (ts.canFire)
 			{
-				ts.StartCoroutine(ts.FireProjectile(toTarget.normalized));
+				ts.StartCoroutine(ts.UseMain(toTarget.normalized));
 			}
 			
 			if (toTarget.magnitude > ts.unitStats.projectileRange)

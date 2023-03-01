@@ -43,7 +43,7 @@ public abstract class UnitScript : MonoBehaviour
     }
 	
 	// Instantiate a projectile and prevent unit from firing for a while
-	public IEnumerator FireProjectile(Vector3 direction)
+	virtual public IEnumerator UseMain(Vector3 direction)
     {
 		canFire = false;
 		

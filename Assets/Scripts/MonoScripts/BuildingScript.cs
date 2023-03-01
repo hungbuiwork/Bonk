@@ -17,7 +17,7 @@ public class BuildingScript : UnitScript
 			Vector2 toTarget = target.gameObject.transform.position - transform.position;
 			if (toTarget.magnitude <= unitStats.projectileRange && canFire)
 			{
-				StartCoroutine(FireProjectile(toTarget.normalized));
+				StartCoroutine(UseMain(toTarget.normalized));
 			}
 		}
     }

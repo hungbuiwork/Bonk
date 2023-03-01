@@ -17,7 +17,7 @@ public class RoundCounter : MonoBehaviour
     [SerializeField]
     private bool stopCount = false;
     [SerializeField]
-    private int numOfRounds = 0; //currently unused
+    public int numOfRounds = 0;
 
 
     void Update()
