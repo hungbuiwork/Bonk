@@ -64,6 +64,7 @@ public class RoundController : MonoBehaviour
             scoreTeam2 += 1;
         }
 
+        checkWin();
 
         NextPhase();
     }
@@ -73,6 +74,8 @@ public class RoundController : MonoBehaviour
         // check if round limit is reached
         if (roundCounter.numOfRounds >= 20)
         {
+            Debug.LogError("max round reached");
+
             if (scoreTeam1 == scoreTeam2) {WinGame(3); }
             else if (scoreTeam1 > scoreTeam2) {WinGame(1); }
             else if (scoreTeam2 > scoreTeam1) {WinGame(2); }
@@ -87,19 +90,27 @@ public class RoundController : MonoBehaviour
 
     void WinGame(int i)
     {
+        //TODO: add text and other UI stuff
+
+        Debug.LogError("There is a winner");
+        Time.timeScale = 0f;
+
         if (i == 1)
         {
             //player 1 wins
+            Debug.LogError("player 1 wins");
         }
 
         else if (i == 2)
         {
             //player 2 wins
+            Debug.LogError("player 2 wins");
         }
 
         else if (i == 3)
         {
             // tied
+            Debug.LogError("both players tied");
         }
     }
 
