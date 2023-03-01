@@ -9,7 +9,7 @@ using UnityEngine;
 public class TroopScript : UnitScript
 {
     public Rigidbody2D rb;
-	private StateMachine sm;
+	protected StateMachine sm;
 	public float health;
 	// Delegates in case something happens when troop dies, etc.
 	public delegate void OnDeath(float health);
@@ -29,7 +29,7 @@ public class TroopScript : UnitScript
     }
 	
 	// Reset variables/objects and set sprite
-	private void Awake ()
+	protected virtual void Awake ()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		
