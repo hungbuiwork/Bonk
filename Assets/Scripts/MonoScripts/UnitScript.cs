@@ -16,7 +16,7 @@ public abstract class UnitScript : MonoBehaviour
 	[SerializeField]
 	protected SpriteRenderer spriteRenderer;
 	
-	// Set list of enemy troops after creation
+	// Set list of enemy and allied troops after creation
     public void UpdateTeams(ref List<TroopScript> newAllies, ref List<TroopScript> newEnemies)
     {
 		allies = newAllies;

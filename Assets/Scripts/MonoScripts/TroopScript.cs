@@ -19,10 +19,8 @@ public class TroopScript : UnitScript
 	public delegate void OnReceiveHealth(float health);
 	public OnReceiveHealth onReceiveHealth;
 	protected bool troopIsDead;
-	// Buffer so the troop doesn't have to be at the exact edge of its range
-	public float tooClose = 0.2f;
 
-	// Move so that closest enemy is at edge of firing range and attack
+	// Carry out current state's AI behavior
     public override void OnUpdate()
     {
 		sm.UpdateState();
