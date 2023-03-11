@@ -10,12 +10,18 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField createInput;
     [SerializeField] private TMP_InputField joinInput;
     [SerializeField] private TMP_Text feedback;
+    [SerializeField] private Color feedbackColor = Color.red;
 
+    private void SetFeedbackText(string text)
+    {
+        feedback.color = feedbackColor;
+        feedback.text = text;
+    }
     public void CreateRoom()
     {
         if (createInput.text == "")
         {
-            feedback.text = "Name the room before creating!";
+            SetFeedbackText("Name the room before creating!");
             return;
         }
         PhotonNetwork.CreateRoom(createInput.text);
@@ -25,7 +31,7 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
     {
         if (joinInput.text == "")
         {
-            feedback.text = "Give a room name before joining!";
+            SetFeedbackText("Give a room name before joining!");
             return;
         }
         PhotonNetwork.JoinRoom(joinInput.text);
@@ -39,12 +45,12 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         base.OnJoinRoomFailed(returnCode, message);
-        feedback.text = message;
+        SetFeedbackText(message);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
-        feedback.text = message;
+        SetFeedbackText(message);
     }
 }

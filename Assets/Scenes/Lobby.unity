@@ -155,6 +155,7 @@ MonoBehaviour:
   createInput: {fileID: 1836380282}
   joinInput: {fileID: 1108493942}
   feedback: {fileID: 984400215}
+  feedbackColor: {r: 1, g: 0.09119487, b: 0.09119487, a: 1}
 --- !u!4 &101462620
 Transform:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123008511
 GameObject:
@@ -1103,7 +1104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Connection Successful!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868213381f7f8a94ba2d247bf3b9092d, type: 2}
   m_sharedMaterial: {fileID: -6369823675337906683, guid: 868213381f7f8a94ba2d247bf3b9092d, type: 2}
@@ -1112,8 +1113,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281611519
-  m_fontColor: {r: 1, g: 0.20440245, b: 0.20440245, a: 1}
+    rgba: 4281532220
+  m_fontColor: {r: 0.23651384, g: 1, b: 0.19496846, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1130,7 +1131,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.75
+  m_fontSize: 72
   m_fontSizeBase: 59.75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1384,7 +1385,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034206573
 GameObject:
@@ -1485,7 +1486,7 @@ RectTransform:
   - {fileID: 984400217}
   - {fileID: 1986153543}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3022,6 +3023,7 @@ GameObject:
   - component: {fileID: 1986153546}
   - component: {fileID: 1986153545}
   - component: {fileID: 1986153544}
+  - component: {fileID: 1986153548}
   m_Layer: 5
   m_Name: BackToMain
   m_TagString: Untagged
@@ -3117,6 +3119,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1986153548}
+        m_TargetAssemblyTypeName: DisconnectServer, Assembly-CSharp
+        m_MethodName: Disconnect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1986153544}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: LoadScene
@@ -3167,6 +3181,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986153542}
   m_CullTransparentMesh: 1
+--- !u!114 &1986153548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986153542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6724934fbeea341ba560b1d55b59a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disconnectionScene: MainMenu
 --- !u!1 &2140134840
 GameObject:
   m_ObjectHideFlags: 0
