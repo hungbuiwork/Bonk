@@ -16,6 +16,7 @@ public class DisconnectServer : MonoBehaviourPunCallbacks
 
     public void Disconnect()
     {
+        Time.timeScale = 1f;
         PhotonNetwork.Disconnect();
     }
 }
