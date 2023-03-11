@@ -546,7 +546,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0955477, y: 0.35214055}
+  m_Offset: {x: -1.0955477, y: 0.18194318}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -557,7 +557,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.0864716, y: 8.199314}
+  m_Size: {x: 6.0864716, y: 7.8589206}
   m_EdgeRadius: 0
 --- !u!1 &374321731
 GameObject:
@@ -635,6 +635,17 @@ MonoBehaviour:
   deadTroops2: []
   buildings1: []
   buildings2: []
+--- !u!114 &393255803 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5031043889677611720, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
+  m_PrefabInstance: {fileID: 4259953676595241296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777bbf45b0faec14cab549e99e32384c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &396194253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3129770701067172412, guid: f1eb46f521c74bb46b14270da2d8b136, type: 3}
@@ -831,7 +842,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0955477, y: 0.35214055}
+  m_Offset: {x: -1.0955477, y: 0.054295897}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -842,7 +853,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.0864716, y: 8.199314}
+  m_Size: {x: 6.0864716, y: 7.6036253}
   m_EdgeRadius: 0
 --- !u!4 &455636322
 Transform:
@@ -3638,6 +3649,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2317375030771880825, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.12983513
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317375030771880825, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317375030771880825, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2317375030771880830, guid: 66a14cc8f40148048bfd62047ebcabf8, type: 3}
       propertyPath: bounds
       value: 
@@ -4654,19 +4677,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4259953675562750910, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4259953675562750910, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 916053790}
+      objectReference: {fileID: 393255803}
     - target: {fileID: 4259953675562750910, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: Switch
       objectReference: {fileID: 0}
     - target: {fileID: 4259953675562750910, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneController, Assembly-CSharp
+      value: PopUpMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4259953675562750910, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -4679,7 +4702,11 @@ PrefabInstance:
     - target: {fileID: 4259953676137070828, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1277103113}
+      objectReference: {fileID: 393255803}
+    - target: {fileID: 4259953676137070828, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Switch
+      objectReference: {fileID: 0}
     - target: {fileID: 4259953676476937007, guid: eea655d1966f6a04bb741de7dcf98bdf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

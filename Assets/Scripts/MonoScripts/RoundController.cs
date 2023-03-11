@@ -191,6 +191,7 @@ public class RoundController : MonoBehaviour
         {
             isPrepPhase = false;
             isPrepPhase2 = true;
+            timeManager.StartPrep();
             timeManager.Pause();
         }
 
