@@ -602,6 +602,7 @@ MonoBehaviour:
   maxScore: 10
   roundCounter: {fileID: 746178647}
   maxRound: 20
+  nextButton: {fileID: 396194253}
 --- !u!4 &374321733
 Transform:
   m_ObjectHideFlags: 0

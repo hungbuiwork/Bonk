@@ -117,4 +117,8 @@ public class Shop : MonoBehaviour
         //DELETE LATER
         Debug.Log("FAILURE");
     }
+	public int GetIndex()
+	{
+		return currentIndex;
+	}
 }

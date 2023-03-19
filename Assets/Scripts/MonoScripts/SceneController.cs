@@ -83,25 +83,20 @@ public class SceneController : MonoBehaviour
         if(round.isPrepPhase)
         {
             setPlayerUI(p1_objects, true);
+			setPlayerUI(p2_objects, false);
 
         }
 
         else if(round.isPrepPhase2)
         {
+			setPlayerUI(p1_objects, false);
             setPlayerUI(p2_objects, true);
-            setPlayerUI(p1_objects, false);
         }
-
-        else if(round.isBattlePhase)
+		
+		else if(round.isWaitingPhase || round.isWaitingPhase2 || round.isBattlePhase || round.isStandbyPhase)
         {
-            setPlayerUI(p2_objects, false);
-        }
-
-        //ensure it closes properly
-        else if(round.isStandbyPhase)
-        {
-            setPlayerUI(p2_objects, false);
             setPlayerUI(p1_objects, false);
+            setPlayerUI(p2_objects, false);
         }
 
     }
