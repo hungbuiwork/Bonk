@@ -35,13 +35,13 @@ public class DisplayPhase : MonoBehaviour
         else if(round.isPrepPhase)
         {
             phase.text = "Player 1 Preparation";
-            nextPhase.text = "Done";
+            nextPhase.text = "Ready!";
         }
 
         else if(round.isPrepPhase2)
         {
             phase.text = "Player 2 Preparation";
-            nextPhase.text = "Done";
+            nextPhase.text = "Ready!";
         }
 		
 		else if(round.isWaitingPhase || round.isWaitingPhase2)
