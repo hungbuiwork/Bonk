@@ -14,6 +14,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject warningMessage;
 
+    [SerializeField] private GameObject p1_instruct;
+    [SerializeField] private GameObject p2_instruct;
+
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -40,6 +43,12 @@ public class PauseMenu : MonoBehaviour
     public void NoToHome()
     {
         warningMessage.SetActive(false);
+    }
+
+    public void ToggleInstructions()
+    {
+        p1_instruct.SetActive(!p1_instruct.activeSelf);
+        p2_instruct.SetActive(!p2_instruct.activeSelf);
     }
 
 }
