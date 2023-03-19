@@ -87,4 +87,10 @@ public class TroopScript : UnitScript
     {
         return troopIsDead;
     }
+
+	// flip horizontally
+	public void flip()
+	{
+		spriteRenderer.flipX = true;
+	}
 }

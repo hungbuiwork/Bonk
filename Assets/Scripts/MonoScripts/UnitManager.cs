@@ -49,6 +49,7 @@ public class UnitManager : MonoBehaviour
         else if (team == 2)
         {
             if (aliveTroops2.Count == 0) { onFirstTroopPlacedTeam2(); }
+            troop.flip();
             troop.UpdateTeams(ref aliveTroops2, ref aliveTroops1);
             aliveTroops2.Add(troop);
         }
