@@ -192,7 +192,8 @@ public class RoundController : MonoBehaviour
 		
 		if(isWaitingPhase || isWaitingPhase2)
 		{
-			if (p1Ready && p2Ready)
+            timeManager.Pause();
+            if (p1Ready && p2Ready)
 			{
 				NextPhase();
 			}
@@ -204,10 +205,6 @@ public class RoundController : MonoBehaviour
 		}
     }
 
-    public void StartGame()
-    {
-        isStandbyPhase = true;
-    }
 
 	[PunRPC]
 	void P1Ready()
@@ -226,7 +223,7 @@ public class RoundController : MonoBehaviour
         if(isStandbyPhase)
         {
             isStandbyPhase = false;
-			timeManager.Pause();
+			//timeManager.Pause();
 			if (useOnlineRounds)
 			{
 				nextButton.SetActive(false);
@@ -244,6 +241,7 @@ public class RoundController : MonoBehaviour
 			{
 				isPrepPhase = true;
 				timeManager.StartPrep();
+                timeManager.Pause();
 			}
         }
 		
@@ -260,7 +258,7 @@ public class RoundController : MonoBehaviour
 				isPrepPhase2 = true;
 			}
 			timeManager.StartPrep();
-			timeManager.Pause();
+			//timeManager.Pause();
 			photonView.RPC("P1Ready", RpcTarget.All);
 			photonView.RPC("P2Ready", RpcTarget.All);
 		}
@@ -272,7 +270,7 @@ public class RoundController : MonoBehaviour
 			{
 				photonView.RPC("P1Ready", RpcTarget.All);
 				isWaitingPhase2 = true;
-				timeManager.Pause();
+				//timeManager.Pause();
 				nextButton.SetActive(false);
 			}
 			else
@@ -290,7 +288,7 @@ public class RoundController : MonoBehaviour
 			{
 				photonView.RPC("P2Ready", RpcTarget.All);
 				isWaitingPhase2 = true;
-				timeManager.Pause();
+				//timeManager.Pause();
 				nextButton.SetActive(false);
 			}
 			else

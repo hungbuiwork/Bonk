@@ -77,16 +77,19 @@ public class Timer : MonoBehaviour
     public void StartPrep()
     {
         currentTime = prepDuration;
+        Resume();
     }
 
     public void StartBattle()
     {
         currentTime = battleDuration;
+        Resume();
     }
 
     public void StartStandby()
     {
         currentTime = standbyDuration;
+        Resume();
     }
 
     public float GetCurrentTime()
