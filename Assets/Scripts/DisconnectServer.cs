@@ -11,6 +11,7 @@ public class DisconnectServer : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     [SerializeField] private string disconnectionScene;
     [SerializeField] private TextMeshProUGUI disconnectionText;
+    [SerializeField] private TextMeshProUGUI roomName;
     public override void OnDisconnected(DisconnectCause cause)
     {
         SceneManager.LoadScene(disconnectionScene);
@@ -25,7 +26,12 @@ public class DisconnectServer : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         if (disconnectionText != null)
         {
-            disconnectionText.text = "A player has disconnected. Return to lobby";
+            disconnectionText.text = "A player has disconnected. Returning to main menu in 5 seconds";
+            Invoke("Disconnect", 5);
         }
+    }
+    public void Awake()
+    {
+        roomName.text = "Room: " + PhotonNetwork.CurrentRoom.Name;
     }
 }

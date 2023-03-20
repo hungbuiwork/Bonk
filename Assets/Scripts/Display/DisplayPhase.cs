@@ -6,7 +6,7 @@ using TMPro;
 public class DisplayPhase : MonoBehaviour
 {
     /// <summary>
-    /// Displays phase and scores of the game
+    /// UI display script that displays text onto the screen, based on information reference via the round controller.
     /// </summary>
     [Header("Component")]
     [SerializeField]
@@ -29,7 +29,7 @@ public class DisplayPhase : MonoBehaviour
         if(round.isStandbyPhase)
         {
             phase.text = "Standby Phase";
-            nextPhase.text = "Start Preparation";
+            nextPhase.text = "Ready!";
         }
 
         else if(round.isPrepPhase)
@@ -44,9 +44,14 @@ public class DisplayPhase : MonoBehaviour
             nextPhase.text = "Ready!";
         }
 		
-		else if(round.isWaitingPhase || round.isWaitingPhase2)
+		else if(round.isWaitingPhase)
         {
             phase.text = "Waiting For Opponent";
+        }
+
+        else if (round.isWaitingPhase2)
+        {
+            phase.text = "Waiting for Opponent";
         }
 
         else if(round.isBattlePhase)

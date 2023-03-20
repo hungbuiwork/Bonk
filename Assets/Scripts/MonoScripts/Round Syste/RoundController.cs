@@ -7,7 +7,9 @@ using Photon.Pun;
 public class RoundController : MonoBehaviour
 {
     /// <summary>
-    /// Controls the rounds and the phases inside.
+    /// Controls the game's rounds, score, and phases between rounds.
+    /// This script's implementation works with both local and online multiplayer, depending
+    /// on if useOnlineRounds is ticked to be true.
     /// </summary>
     /// 
     static RoundController instance;
@@ -51,6 +53,7 @@ public class RoundController : MonoBehaviour
 
     private void Awake()
     {
+        //Singleton
         if (instance != null)
         {
             Debug.Log("THERE IS ALREADY AN INSTANCE OF THE ROUND CONTROLLER");
@@ -84,6 +87,7 @@ public class RoundController : MonoBehaviour
 
     void WinRound(int i)
     {
+        ///Determine if a battle has ended, and give points accordingly
         if (i == 1)
         {
             scoreTeam1 += 1;
@@ -101,13 +105,12 @@ public class RoundController : MonoBehaviour
         }
 
         checkWin();
-
         NextPhase();
     }
 
     void checkWin()
     {
-        // check if round limit is reached
+        // check if round limit is reached. If so, declare a player as the winner.
         if (roundCounter.numOfRounds >= 20)
         {
             Debug.LogError("max round reached");
@@ -126,10 +129,10 @@ public class RoundController : MonoBehaviour
 
     void WinGame(int i)
     {
-        //TODO: add text and other UI stuff
-
+        ///Currently inactive(so players can play endless). 
+        ///Stops the game, and declares a specific player as the winner.
         Debug.LogError("There is a winner");
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
         if (i == 1)
         {
@@ -154,48 +157,24 @@ public class RoundController : MonoBehaviour
     {
         if(timeManager.CheckTimeOver())
         {
+            //Call next phase if the timer for that phase hits 0
             NextPhase();
-        }
-
-        if(isStandbyPhase)
-        {
-            
-            //if(phase_debug){Debug.Log("PHASE: STANDBY @@@");}
-            
-        }
-
-        else if(isPrepPhase)
-        {
-			
-            //if(phase_debug){Debug.Log("PHASE: PREP 1 @@@");}
-            //Debug.Log("prep phasing");
-
-            //player 1 turn start
-            
-        }
-        
-        else if(isPrepPhase2)
-        {
-            //if(phase_debug){Debug.Log("PHASE: PREP 2 @@@");}
-            //CheckTimeOver();
-
-            //player 2 turn start
-            
-            
         }
 		
 		else if (isBattlePhase)
         {
-            //if(phase_debug){Debug.Log("PHASE: BATTLE @@@");}
-            unitManager.OnUpdate(); //Call the update function
+            //Call the update function for all units
+            unitManager.OnUpdate(); 
         }
 		
 		if(isWaitingPhase || isWaitingPhase2)
 		{
+            //If in either of the online waiting phases, check to see if both players are ready. If so, move to the next phase.
             timeManager.Pause();
             if (p1Ready && p2Ready)
 			{
 				NextPhase();
+                timeManager.Resume();
 			}
 		}
 		else
@@ -209,36 +188,44 @@ public class RoundController : MonoBehaviour
 	[PunRPC]
 	void P1Ready()
 	{
+        //used w/ PUN to communicate player is ready
 		p1Ready = true;
 	}
 	
 	[PunRPC]
 	void P2Ready()
 	{
-		p2Ready = true;
+        //used w/ PUN to communicate player is ready
+        p2Ready = true;
 	}
 
     public void NextPhase()
     {
+        ///Swaps the current phase to the next phase
+       
         if(isStandbyPhase)
         {
             isStandbyPhase = false;
-			//timeManager.Pause();
 			if (useOnlineRounds)
 			{
+                //Online
 				nextButton.SetActive(false);
-				isWaitingPhase = true;
+                isWaitingPhase = true;
 				if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
 				{
+                    //if player 1, communicate to the server you are ready
 					photonView.RPC("P1Ready", RpcTarget.All);
 				}
 				else
 				{
+                    //if player 2, communicate to the server you are ready
 					photonView.RPC("P2Ready", RpcTarget.All);
 				}
 			}
 			else
 			{
+                //Local
+                //move straight to prep phase
 				isPrepPhase = true;
 				timeManager.StartPrep();
                 timeManager.Pause();
@@ -247,6 +234,7 @@ public class RoundController : MonoBehaviour
 		
 		else if(isWaitingPhase)
 		{
+            ///The online phase before prep phase
 			nextButton.SetActive(true);
 			isWaitingPhase = false;
 			if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
@@ -258,19 +246,18 @@ public class RoundController : MonoBehaviour
 				isPrepPhase2 = true;
 			}
 			timeManager.StartPrep();
-			//timeManager.Pause();
 			photonView.RPC("P1Ready", RpcTarget.All);
 			photonView.RPC("P2Ready", RpcTarget.All);
 		}
 
         else if(isPrepPhase)
         {
+            //player 1's prep phase
             isPrepPhase = false;
 			if (useOnlineRounds)
 			{
 				photonView.RPC("P1Ready", RpcTarget.All);
 				isWaitingPhase2 = true;
-				//timeManager.Pause();
 				nextButton.SetActive(false);
 			}
 			else
@@ -283,12 +270,12 @@ public class RoundController : MonoBehaviour
 
         else if(isPrepPhase2)
         {
+            //player 2's prep phase
             isPrepPhase2 = false;
 			if (useOnlineRounds)
 			{
 				photonView.RPC("P2Ready", RpcTarget.All);
 				isWaitingPhase2 = true;
-				//timeManager.Pause();
 				nextButton.SetActive(false);
 			}
 			else
@@ -302,6 +289,7 @@ public class RoundController : MonoBehaviour
 		
 		else if(isWaitingPhase2)
 		{
+            //the online phase before the battle begins
 			isWaitingPhase2 = false;
 			isBattlePhase = true;
 			if (beginBattle != null) beginBattle();
@@ -312,6 +300,7 @@ public class RoundController : MonoBehaviour
 
         else if(isBattlePhase)
         {
+            //the phase that a battle is happening
 			nextButton.SetActive(true);
             isBattlePhase = false;
             isStandbyPhase = true;
@@ -319,8 +308,5 @@ public class RoundController : MonoBehaviour
             beginStandby();
             timeManager.StartStandby();
         }
-
-        else{}
-
     }
 }
