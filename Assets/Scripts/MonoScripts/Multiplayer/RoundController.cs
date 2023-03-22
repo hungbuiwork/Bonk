@@ -45,7 +45,7 @@ public class RoundController : MonoBehaviour
 	private GameObject nextButton;
 	
 	[SerializeField]
-	private bool useOnlineRounds;
+	public bool useOnlineRounds;
 	
 	private PhotonView photonView;
 	private bool p1Ready;
@@ -175,12 +175,8 @@ public class RoundController : MonoBehaviour
 			{
 				NextPhase();
                 timeManager.Resume();
+                p1Ready = p2Ready = false;
 			}
-		}
-		else
-		{
-			p1Ready = false;
-			p2Ready = false;
 		}
     }
 
@@ -240,14 +236,12 @@ public class RoundController : MonoBehaviour
 			if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
 			{
 				isPrepPhase = true;
-			}
+            }
 			else
 			{
 				isPrepPhase2 = true;
-			}
+            }
 			timeManager.StartPrep();
-			photonView.RPC("P1Ready", RpcTarget.All);
-			photonView.RPC("P2Ready", RpcTarget.All);
 		}
 
         else if(isPrepPhase)
@@ -290,23 +284,23 @@ public class RoundController : MonoBehaviour
 		else if(isWaitingPhase2)
 		{
             //the online phase before the battle begins
-			isWaitingPhase2 = false;
+            isWaitingPhase2 = false;
 			isBattlePhase = true;
 			if (beginBattle != null) beginBattle();
 			timeManager.StartBattle();
-			photonView.RPC("P1Ready", RpcTarget.All);
-			photonView.RPC("P2Ready", RpcTarget.All);
-		}
+            
+        }
 
         else if(isBattlePhase)
         {
             //the phase that a battle is happening
-			nextButton.SetActive(true);
+            nextButton.SetActive(true);
             isBattlePhase = false;
             isStandbyPhase = true;
             unitManager.DestroyAllUnits();
             beginStandby();
             timeManager.StartStandby();
+
         }
     }
 }

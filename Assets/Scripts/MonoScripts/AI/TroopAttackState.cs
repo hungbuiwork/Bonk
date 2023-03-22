@@ -20,7 +20,10 @@ public class TroopAttackState : State
 			{
 				ts.StartCoroutine(ts.UseMain(toTarget.normalized));
 			}
-			
+			if (toTarget.magnitude <ts.unitStats.projectileRange * 3 / 4)
+			{
+				ts.rb.velocity = -toTarget.normalized * ts.unitStats.speed;
+			}
 			if (toTarget.magnitude > ts.unitStats.projectileRange)
 			{
 				sm.ChangeState(gameObject.AddComponent<TroopChaseState>());

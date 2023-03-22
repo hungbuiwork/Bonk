@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HealerPositionState : State
 {
+    /// <summary>
+    /// FSM Healer Position State
+    /// </summary>
     public override void UpdateLogic()
     {
         //calculate new position to walk to

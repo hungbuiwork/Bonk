@@ -9,6 +9,10 @@ using TMPro;
 
 public class DisconnectServer : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
+    /// <summary>
+    /// This script is used to moderate the server for connectivity, severing a connection if a player has left the room or if a player quits to main menu.
+    /// This script also displays information about disconnection status and room name
+    /// </summary>
     [SerializeField] private string disconnectionScene;
     [SerializeField] private TextMeshProUGUI disconnectionText;
     [SerializeField] private TextMeshProUGUI roomName;

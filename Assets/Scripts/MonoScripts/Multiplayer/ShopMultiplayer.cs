@@ -5,6 +5,10 @@ using Photon.Pun;
 
 public class ShopMultiplayer : Shop
 {
+    /// <summary>
+    /// This is the online multiplayer implementation of the shop. This synchronizes
+    /// the troop spawning in an online multiplayer game.
+    /// </summary>
     [SerializeField]
     private Transform cursor;
     [SerializeField]
